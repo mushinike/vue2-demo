@@ -50,6 +50,15 @@ export default {
 	    	}},
 	    	{path: '/admin/other/about',name:"other-about", component: function(resolve ) {
 	    		require(['./components/Admin/other/about.vue'], resolve);
+	    	}},
+	    	{path: '/admin/news/list',name:"news-list", component: function(resolve ) {
+	    		require(['./components/Admin/news/news-list.vue'], resolve);
+	    	}},
+	    	{path: '/admin/news/edit',name:"news-edit", component: function(resolve ) {
+	    		require(['./components/Admin/news/news-edit.vue'], resolve);
+	    	}},
+	    	{path: '/admin/news/add',name:"news-add", component: function(resolve ) {
+	    		require(['./components/Admin/news/news-add.vue'], resolve);
 	    	}}
     		
     		]

@@ -18,8 +18,12 @@ import news from "../News/news-datas.js";
 export default{
 	data:function(){
 		return {
-			items:news.getPageDatas(0,1,10)
+			items:[]
 		}
+	},
+	created:function(){
+		
+		this.items=news.getPageDatas(0,1,10);
 	}
 }
 </script>

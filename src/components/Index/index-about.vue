@@ -21,17 +21,14 @@ export default{
 		return {
 			//message:"dddd"
 			message:""
-			}
-	},
-	created:function(){
-		console.log(564)
+		}
 	},
 	mounted:function(){
 		if(this.$root.about){
 			this.message=this.$root.about;
 		}
 		else{
-			this.$root.about=this.message=about.getAboutData();
+			this.$root.about=this.message=about.getOne();
 		}
 	},
 	computed:{

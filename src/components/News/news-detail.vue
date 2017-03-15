@@ -27,7 +27,7 @@ export default{
 		}
 	},
 	beforeRouteEnter:function(to,from,next){
-		var obj=news.getData(to.params.id,to.params.type);
+		var obj=news.getOne(to.params.id);
 		next(function(vm){
 			vm.$data.data=obj;
 			vm.$data.typeStr=obj.type==1?"公司新闻":"行业新闻";

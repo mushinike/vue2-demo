@@ -5,6 +5,7 @@ export default{
 		}
 	},
 	getOne:function(){
+		this.init();
 		return sessionStorage["about"];
 	},
 	edit:function(content){
