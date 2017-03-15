@@ -8,12 +8,12 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin("[name].css")
         //代码进行压缩
-        ,new webpack.optimize.UglifyJsPlugin({  
+        /*,new webpack.optimize.UglifyJsPlugin({  
 		      compress: {
 		        warnings: false
 		      },
 		      sourceMap:false
-		    })
+		    })*/
     ],
     //页面入口文件配置
     entry: {
@@ -23,7 +23,7 @@ module.exports = {
     output: {
         path: './dist/',
         publicPath:"./dist/",    //进行文件分离，进行懒加载
-        chunkFilename:"[id]_file.js",  ///?[chunkhash]
+        chunkFilename:"[hash:8]_[id]_file.js",  ///?[chunkhash]
         filename: '[name].js'
     },
     module: {

@@ -1,105 +1,338 @@
 webpackJsonp([9],{
 
-/***/ 52:
-/*!*********************************************!*\
-  !*** ./src/components/Tools/pagination.vue ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
+/***/ 7:
+/*!**************************************!*\
+  !*** ./~/css-loader/lib/css-base.js ***!
+  \**************************************/
+/***/ function(module, exports) {
 
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./pagination.vue */ 53)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src\\components\\Tools\\pagination.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./pagination.vue */ 54)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-2e4a94bd/pagination.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
 
 /***/ },
 
-/***/ 53:
-/*!*********************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Tools/pagination.vue ***!
-  \*********************************************************************************************************************************************************************************/
-/***/ function(module, exports) {
+/***/ 8:
+/*!*****************************************!*\
+  !*** ./~/vue-style-loader/addStyles.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = {
-	  methods: {
-	    handleSizeChange: function handleSizeChange(val) {
-	      this.pageSize = val;
-	      this.$emit("size-change", val);
-	    },
-	    handleCurrentChange: function handleCurrentChange(val) {
-	      this.currentPage = val;
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
 	
-	      this.$emit("page-change", val);
-	    }
-	  },
-	  props: ["total", "pageSize", "pageSizes"],
-	  data: function data() {
-	    return {
-	      currentPage: 1
-	    };
-	  },
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
 	
-	  created: function created() {},
-	  watch: {
-	    $route: function $route() {
-	      this.currentPage = 1;
-	    }
-	  }
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+	
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+
+/***/ 90:
+/*!***************************************************!*\
+  !*** ./~/babel-runtime/core-js/json/stringify.js ***!
+  \***************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/json/stringify */ 91), __esModule: true };
+
+/***/ },
+
+/***/ 91:
+/*!****************************************************************!*\
+  !*** ./~/babel-runtime/~/core-js/library/fn/json/stringify.js ***!
+  \****************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var core = __webpack_require__(/*! ../../modules/$.core */ 92);
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
 	};
 
 /***/ },
 
-/***/ 54:
-/*!**********************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Tools/pagination.vue ***!
-  \**********************************************************************************************************************/
+/***/ 92:
+/*!*************************************************************!*\
+  !*** ./~/babel-runtime/~/core-js/library/modules/$.core.js ***!
+  \*************************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "\n<el-pagination\n  @size-change=\"handleSizeChange\"\n  @current-change=\"handleCurrentChange\"\n  :current-page=\"currentPage\"\n  :page-sizes=\"pageSizes\"\n  :page-size=\"pageSize\"\n  layout=\"total, sizes, prev, pager, next, jumper\"\n  :total=\"total\">\n</el-pagination>\n";
+	var core = module.exports = {version: '1.2.6'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
 
-/***/ 56:
+/***/ 100:
 /*!*************************************************!*\
-  !*** ./src/components/Product/product-list.vue ***!
+  !*** ./src/components/admin/login/register.vue ***!
   \*************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue */ 57)
-	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./product-list.vue */ 59)
+	__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!../../../../~/vue-loader/lib/style-rewriter.js!../../../../~/vue-loader/lib/selector.js?type=style&index=0!./register.vue */ 101)
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../../~/vue-loader/lib/selector.js?type=script&index=0!./register.vue */ 103)
 	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src\\components\\Product\\product-list.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./product-list.vue */ 60)
+	  console.warn("[vue-loader] src\\components\\admin\\login\\register.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../../~/vue-loader/lib/selector.js?type=template&index=0!./register.vue */ 105)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -115,7 +348,7 @@ webpackJsonp([9],{
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-f42705ea/product-list.vue"
+	  var id = "_v-4b7bc145/register.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -125,26 +358,26 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 57:
+/***/ 101:
 /*!**************************************************************************************************************************************************************************************!*\
-  !*** ./~/vue-style-loader!./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Product/product-list.vue ***!
+  !*** ./~/vue-style-loader!./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/admin/login/register.vue ***!
   \**************************************************************************************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !../../../~/css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue */ 58);
+	var content = __webpack_require__(/*! !../../../../~/css-loader?sourceMap!../../../../~/vue-loader/lib/style-rewriter.js!../../../../~/vue-loader/lib/selector.js?type=style&index=0!./register.vue */ 102);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ../../../~/vue-style-loader/addStyles.js */ 6)(content, {});
+	var update = __webpack_require__(/*! ../../../../~/vue-style-loader/addStyles.js */ 8)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue");
+			module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./register.vue", function() {
+				var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./register.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -155,100 +388,104 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 58:
+/***/ 102:
 /*!*****************************************************************************************************************************************************************!*\
-  !*** ./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Product/product-list.vue ***!
+  !*** ./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/admin/login/register.vue ***!
   \*****************************************************************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 5)();
+	exports = module.exports = __webpack_require__(/*! ../../../../~/css-loader/lib/css-base.js */ 7)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.product-content{overflow: hidden;}\r\n.product-content-ul li{float:left;margin-right:36px;margin-bottom: 30px;}\r\n.product-content-ul li img{vertical-align: top;width:220px}\r\n.product-content-ul li.marginRight0{margin-right: 0;}\r\n.page-center{margin: 0 auto;text-align: center;}\r\n\t\r\n", "", {"version":3,"sources":["/./src/components/Product/product-list.vue?2908d610"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;AA2BA,iBAAA,iBAAA,CAAA;AACA,uBAAA,WAAA,kBAAA,oBAAA,CAAA;AACA,2BAAA,oBAAA,WAAA,CAAA;AACA,oCAAA,gBAAA,CAAA;AACA,aAAA,eAAA,mBAAA,CAAA","file":"product-list.vue","sourcesContent":["<template>\r\n\t<el-card class=\"box-card\">\r\n\t\t<div slot=\"header\" class=\"clearfix\">\r\n   \t\t\t<span >产品列表</span>\r\n   \t\t\t<span style=\"float:right\">首页>产品展示</span>\r\n  \t\t</div>\r\n\t\t<div class=\"product-content\">\r\n\t\t\t<ul class=\"clearfix product-content-ul\">\r\n\t\t\t\t<li v-for=\"(item,key,index) in items\" :class=\"{marginRight0:(key+1)%4==0}\">\r\n\t\t\t\t\t<el-card :body-style=\"{ padding: '5px' }\">\r\n\t\t\t\t\t\t<img src=\"../../images/hamburger.png\"  class=\"image\">\r\n\t\t\t\t\t\t<div >\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t<span>{{item.title}}</span>\r\n\t\t\t\t\t\t\t<div class=\"bottom clearfix\">\r\n\t\t\t\t\t\t\t  <span class=\"time\">{{item.date}}</span>\r\n\t\t\t\t\t\t\t  <router-link :to=\"{path:'/product/detail/',name:'product-detail',params:{id:item.id}}\">查看详情</router-link>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t    </el-card>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t\t<page class=\"page-center\" :total=\"total\" :page-size=\"pageSize\" :page-sizes=\"[8,16,24,50]\"  @size-change=\"sizeChange\"  @page-change=\"pageChange\"></page>\r\n\t\t</div>\r\n\t</el-card>\r\n</template>\r\n<style>\r\n.product-content{overflow: hidden;}\r\n.product-content-ul li{float:left;margin-right:36px;margin-bottom: 30px;}\r\n.product-content-ul li img{vertical-align: top;width:220px}\r\n.product-content-ul li.marginRight0{margin-right: 0;}\r\n.page-center{margin: 0 auto;text-align: center;}\r\n\t\r\n</style>\r\n\r\n<script>\r\nimport datas from \"./product-datas\";\r\nimport page from \"../Tools/pagination\";\r\n\r\nexport default{\r\n\tdata:function (){\r\n\t\treturn {\r\n\t\t\titems:[],\r\n\t\t\ttotal:0,\r\n\t\t\tpageSize:8\r\n\t\t}\r\n\t\t\r\n\t},\r\n\tbeforeRouteEnter:function(to,from,next){\r\n\t\tvar items=datas.getPageDatas(1,8);\r\n\t\t\r\n\t\tnext(function(vm){\r\n\t\t\tvm.items=items;\r\n\t\t\tvm.total=datas.total;\r\n\t\t});\r\n\t\t\r\n\t},\r\n\tmethods:{\r\n\t\tpageChange:function(val){\r\n\t\t\tthis.items=datas.getPageDatas(val,datas.pageNum);\r\n\t\t\tthis.total=datas.total;\r\n\t\t},\r\n\t\tsizeChange:function(val){\r\n\t\t\tthis.items=datas.getPageDatas(datas.pageIndex,val);\r\n\t\t\tthis.total=datas.total;\r\n\t\t\tthis.pageSize=val;\r\n\t\t},\r\n\t\tpageInit:function(){\r\n\t\t\tthis.items=datas.getPageDatas(1,8);\r\n\t\t\tthis.total=datas.total;\r\n\t\t}\r\n\t},\r\n\tmounted:function(){\r\n\r\n\t\t//this.pageInit();\r\n\t},\r\n\tcomponents:{\r\n\t\tpage\r\n\t},\r\n}\r\n\t\r\n</script>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.login-content{\r\n\twidth:500px;\r\n\tmargin:100px auto;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/admin/login/register.vue?f26209ba"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA0FA;CACA,YAAA;CACA,kBAAA;CACA","file":"register.vue","sourcesContent":["<template>\r\n\t<el-card class=\"box-card\">\r\n\t\t<div slot=\"header\" class=\"clearfix\">\r\n\t\t\t<span>用户注册中心</span>\r\n\t\t\t<span class=\"floatRight\">首页>管理中心</el-button>\r\n\t\t</div>\r\n\t\t<div class=\"login-content\">\r\n\t\t\t<el-form :rules=\"rules\" ref=\"ruleForm\" label-width=\"100px\" :model=\"formLabelAlign\">\r\n\t\t\t  <el-form-item label=\"用户名称\" prop=\"name\">\r\n\t\t\t    <el-input v-model=\"formLabelAlign.name\"></el-input>\r\n\t\t\t  </el-form-item>\r\n\t\t\t  <el-form-item label=\"密码\" prop=\"password\">\r\n\t\t\t    <el-input type=\"password\" v-model=\"formLabelAlign.password\"></el-input>\r\n\t\t\t  </el-form-item>\r\n\t\t\t  <el-form-item label=\"确认密码\" prop=\"password1\">\r\n\t\t\t    <el-input type=\"password\" v-model=\"formLabelAlign.password1\"></el-input>\r\n\t\t\t  </el-form-item>\r\n\t\t\t  <el-form-item style=\"padding-top:15px;\">\r\n\t\t\t    <el-button type=\"primary\" @click=\"submitForm('ruleForm')\">立即创建</el-button>\r\n\t\t\t    <el-button @click=\"resetForm('ruleForm')\">重置</el-button>\r\n\t\t\t  </el-form-item>\r\n\t\t\t</el-form>\r\n\t\t</div>\r\n\t</el-card>\r\n</template>\r\n\r\n<script>\r\nimport data from \"./user-datas\";\r\n\t\r\nexport default{\r\n\tdata:function(){\r\n\t\tvar validatePass2 = (rule, value, callback) => {\r\n\t        if (value === '') {\r\n\t          callback(new Error('请再次输入密码'));\r\n\t        } else if (value !== this.formLabelAlign.password) {\r\n\t          callback(new Error('两次输入密码不一致!'));\r\n\t        } else {\r\n\t          callback();\r\n\t        }\r\n\t    };\r\n\r\n\t\treturn {\r\n\t\t\tformLabelAlign:{\r\n\t\t\t\tid:0,\r\n\t\t\t\tname:\"\",\r\n\t\t\t\tpassword:\"\",\r\n\t\t\t\tpassword1:\"\",\r\n\t\t\t\tdate:(new Date()).toLocaleString()\r\n\t\t\t},\r\n\t\t\trules:{\r\n\t\t\t\tname:[\r\n\t\t\t\t\t{ required: true, message: '请输入用户名称', trigger: 'blur' },\r\n\t\t\t\t\t{ min: 3, max: 5, message: '名称长度在 3 到 5 个字符', trigger: 'blur' }\r\n\t\t\t\t],\r\n\t\t\t\tpassword:[\r\n\t\t\t\t\t{ required: true, message: '请输入密码', trigger: 'blur' },\r\n\t\t\t\t\t{ min: 6, max: 12, message: '密码长度在6 到 12个字符', trigger: 'blur' }\r\n\t\t\t\t],\r\n\t\t\t\tpassword1:[\r\n\t\t\t\t\t{ required: true, message: '请输入确认密码', trigger: 'blur' },\r\n\t\t\t\t\t{ validator:validatePass2, trigger: 'blur' }\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\t},\r\n\tmethods: {\r\n      submitForm(formName) {\r\n      \tvar _this=this;\r\n        _this.$refs[formName].validate((valid) => {\r\n          if (valid) {\r\n            data.add(_this.formLabelAlign);\r\n            sessionStorage[\"loginName\"]=JSON.stringify(_this.formLabelAlign);\r\n            _this.$router.push({\"path\":\"/admin/index/content\"});\r\n          } else {\r\n            return false;\r\n          }\r\n        });\r\n      },\r\n      resetForm(formName) {\r\n        this.$refs[formName].resetFields();\r\n      }\r\n    },\r\n    mounted:function(){\r\n    \tthis.id=data.getId();\r\n    }\r\n}\r\n\t\r\n</script>\r\n\r\n<style>\r\n.login-content{\r\n\twidth:500px;\r\n\tmargin:100px auto;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
 
-/***/ 59:
+/***/ 103:
 /*!*************************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Product/product-list.vue ***!
+  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/admin/login/register.vue ***!
   \*************************************************************************************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	
-	var _productDatas = __webpack_require__(/*! ./product-datas */ 69);
+	var _stringify = __webpack_require__(/*! babel-runtime/core-js/json/stringify */ 90);
 	
-	var _productDatas2 = _interopRequireDefault(_productDatas);
+	var _stringify2 = _interopRequireDefault(_stringify);
 	
-	var _pagination = __webpack_require__(/*! ../Tools/pagination */ 52);
+	var _userDatas = __webpack_require__(/*! ./user-datas */ 104);
 	
-	var _pagination2 = _interopRequireDefault(_pagination);
+	var _userDatas2 = _interopRequireDefault(_userDatas);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = {
 		data: function data() {
+			var _this2 = this;
+	
+			var validatePass2 = function validatePass2(rule, value, callback) {
+				if (value === '') {
+					callback(new Error('请再次输入密码'));
+				} else if (value !== _this2.formLabelAlign.password) {
+					callback(new Error('两次输入密码不一致!'));
+				} else {
+					callback();
+				}
+			};
+	
 			return {
-				items: [],
-				total: 0,
-				pageSize: 8
+				formLabelAlign: {
+					id: 0,
+					name: "",
+					password: "",
+					password1: "",
+					date: new Date().toLocaleString()
+				},
+				rules: {
+					name: [{ required: true, message: '请输入用户名称', trigger: 'blur' }, { min: 3, max: 5, message: '名称长度在 3 到 5 个字符', trigger: 'blur' }],
+					password: [{ required: true, message: '请输入密码', trigger: 'blur' }, { min: 6, max: 12, message: '密码长度在6 到 12个字符', trigger: 'blur' }],
+					password1: [{ required: true, message: '请输入确认密码', trigger: 'blur' }, { validator: validatePass2, trigger: 'blur' }]
+				}
 			};
 		},
-		beforeRouteEnter: function beforeRouteEnter(to, from, next) {
-			var items = _productDatas2.default.getPageDatas(1, 8);
-	
-			next(function (vm) {
-				vm.items = items;
-				vm.total = _productDatas2.default.total;
-			});
-		},
 		methods: {
-			pageChange: function pageChange(val) {
-				this.items = _productDatas2.default.getPageDatas(val, _productDatas2.default.pageNum);
-				this.total = _productDatas2.default.total;
+			submitForm: function submitForm(formName) {
+				var _this = this;
+				_this.$refs[formName].validate(function (valid) {
+					if (valid) {
+						_userDatas2.default.add(_this.formLabelAlign);
+						sessionStorage["loginName"] = (0, _stringify2.default)(_this.formLabelAlign);
+						_this.$router.push({ "path": "/admin/index/content" });
+					} else {
+						return false;
+					}
+				});
 			},
-			sizeChange: function sizeChange(val) {
-				this.items = _productDatas2.default.getPageDatas(_productDatas2.default.pageIndex, val);
-				this.total = _productDatas2.default.total;
-				this.pageSize = val;
-			},
-			pageInit: function pageInit() {
-				this.items = _productDatas2.default.getPageDatas(1, 8);
-				this.total = _productDatas2.default.total;
+			resetForm: function resetForm(formName) {
+				this.$refs[formName].resetFields();
 			}
 		},
-		mounted: function mounted() {},
-		components: {
-			page: _pagination2.default
+		mounted: function mounted() {
+			this.id = _userDatas2.default.getId();
 		}
 	};
 
 /***/ },
 
-/***/ 60:
-/*!**************************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Product/product-list.vue ***!
-  \**************************************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<el-card class=\"box-card\">\n\t\t<div slot=\"header\" class=\"clearfix\">\n   \t\t\t<span >产品列表</span>\n   \t\t\t<span style=\"float:right\">首页>产品展示</span>\n  \t\t</div>\n\t\t<div class=\"product-content\">\n\t\t\t<ul class=\"clearfix product-content-ul\">\n\t\t\t\t<li v-for=\"(item,key,index) in items\" :class=\"{marginRight0:(key+1)%4==0}\">\n\t\t\t\t\t<el-card :body-style=\"{ padding: '5px' }\">\n\t\t\t\t\t\t<img src=\"" + __webpack_require__(/*! ../../images/hamburger.png */ 18) + "\"  class=\"image\">\n\t\t\t\t\t\t<div >\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<span>{{item.title}}</span>\n\t\t\t\t\t\t\t<div class=\"bottom clearfix\">\n\t\t\t\t\t\t\t  <span class=\"time\">{{item.date}}</span>\n\t\t\t\t\t\t\t  <router-link :to=\"{path:'/product/detail/',name:'product-detail',params:{id:item.id}}\">查看详情</router-link>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t    </el-card>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<page class=\"page-center\" :total=\"total\" :page-size=\"pageSize\" :page-sizes=\"[8,16,24,50]\"  @size-change=\"sizeChange\"  @page-change=\"pageChange\"></page>\n\t\t</div>\n\t</el-card>\n";
-
-/***/ },
-
-/***/ 69:
-/*!*************************************************!*\
-  !*** ./src/components/Product/product-datas.js ***!
-  \*************************************************/
-/***/ function(module, exports, __webpack_require__) {
+/***/ 104:
+/*!**************************************************!*\
+  !*** ./src/components/admin/login/user-datas.js ***!
+  \**************************************************/
+/***/ function(module, exports) {
 
 	"use strict";
 	
@@ -256,165 +493,115 @@ webpackJsonp([9],{
 		value: true
 	});
 	exports.default = {
-		getOneData: function getOneData(id) {
-			var obj = {};
-			obj.id = id;
-			obj.title = "产品名称" + id;
-			obj.content = "产品内容" + id;
-			obj.date = new Date().toLocaleDateString();
-			obj.src = __webpack_require__(/*! ../../images/pic_1.jpg */ 81);
-			obj.images = [];
-			obj.images.push(__webpack_require__(/*! ../../images/1.jpg */ 70));
-			obj.images.push(__webpack_require__(/*! ../../images/2.jpg */ 71));
-			obj.images.push(__webpack_require__(/*! ../../images/3.jpg */ 72));
-			obj.images.push(__webpack_require__(/*! ../../images/4.jpg */ 73));
-			obj.images.push(__webpack_require__(/*! ../../images/5.jpg */ 74));
-			obj.images.push(__webpack_require__(/*! ../../images/6.jpg */ 75));
-			obj.images.push(__webpack_require__(/*! ../../images/7.jpg */ 76));
-			obj.images.push(__webpack_require__(/*! ../../images/8.jpg */ 77));
-			obj.images.push(__webpack_require__(/*! ../../images/9.jpg */ 78));
+		getOne: function getOne(userName, password) {
+			var users = JSON.parse(sessionStorage["users"]),
+			    user;
+			for (var i = 0, ii = users.length; i < ii; i++) {
+				user = users[i];
+				if (userName == user.name && password && password == user.password) {
+					return user;
+				} else if (userName == user.name && !password) {
+					return user;
+				}
+			}
 	
-			return obj;
+			return {};
+		},
+		add: function add(addObj) {
+			var obj = {};
+			for (var key in addObj) {
+				if (key != "password1") {
+					obj[key] = addObj[key];
+				}
+			}
+	
+			var users = JSON.parse(sessionStorage["users"]);
+			if (users.length > 1) {
+				users.push(users);
+			} else {
+				users = [].concat(users, obj);
+			}
+	
+			sessionStorage["users"] = JSON.stringify(users);
+	
+			return true;
+		},
+		edit: function edit(editObj) {
+			var users = JSON.parse(sessionStorage["users"]);
+	
+			for (var i = 0, ii = users.length; i < ii; i++) {
+				if (editObj.name == users[i].name) {
+					users[i] = editObj;
+					sessionStorage["users"] = JSON.stringify(users);
+					return true;
+				}
+			}
+	
+			return false;
+		},
+		deleted: function deleted(userName) {
+			var users = JSON.parse(sessionStorage["users"]);
+			for (var i = 0, ii = users.length; i < ii; i++) {
+				if (userName == users[i].name) {
+					users.splice(i, 1);
+					sessionStorage["users"] = JSON.stringify(users);
+					return true;
+				}
+			}
+	
+			return false;
 		},
 		getPageDatas: function getPageDatas(pageIndex, pageNum) {
-			var retArrs = [];
-			this.total = 3500;
+			var datas = JSON.parse(sessionStorage["users"]).reverse();
+			var retArrs;
+			this.total = datas.length;
 			this.pageIndex = pageIndex;
 			this.pageNum = pageNum;
 			pageIndex = pageIndex < 1 ? 1 : pageIndex;
 			pageNum = pageNum < 0 ? 0 : pageNum;
-			var pageStart = (pageIndex - 1) * pageNum + 1;
-			var pageEnd = pageStart + pageNum;
-			var obj;
 	
-			for (; pageStart < pageEnd; pageStart++) {
-				obj = {};
-				obj.id = pageStart;
-				obj.title = "产品名称" + pageStart;
-				obj.content = "产品内容" + pageStart;
-				obj.date = new Date().toLocaleDateString();
-				obj.src = __webpack_require__(/*! ../../images/hamburger.png */ 18);
-				obj.images = [];
-				obj.images.push(__webpack_require__(/*! ../../images/1.jpg */ 70));
-				obj.images.push(__webpack_require__(/*! ../../images/2.jpg */ 71));
-				obj.images.push(__webpack_require__(/*! ../../images/3.jpg */ 72));
-				obj.images.push(__webpack_require__(/*! ../../images/4.jpg */ 73));
-				obj.images.push(__webpack_require__(/*! ../../images/5.jpg */ 74));
-				obj.images.push(__webpack_require__(/*! ../../images/6.jpg */ 75));
-				obj.images.push(__webpack_require__(/*! ../../images/7.jpg */ 76));
-				obj.images.push(__webpack_require__(/*! ../../images/8.jpg */ 77));
-				obj.images.push(__webpack_require__(/*! ../../images/9.jpg */ 78));
+			var pageStart = (pageIndex - 1) * pageNum;
+			var pageEnd = pageStart + pageNum > this.total ? this.total : pageStart + pageNum;
 	
-				retArrs.push(obj);
-			}
+			retArrs = datas.slice(pageStart, pageEnd);
 	
 			return retArrs;
 		},
 		total: 0,
 		pageIndex: 0,
-		pageNum: 0
+		pageNum: 0,
+		getId: function getId() {
+			if (!sessionStorage["users"]) {
+				var data = [];
+				data.push({ name: "msnk", password: "123456", date: new Date().toLocaleDateString(), id: 1 });
 	
+				var obj = {};
+				for (var i = 0, ii = 10; i < ii; i++) {
+					obj = {};
+					obj.name = "路人甲_" + i;
+					obj.password = "123456";
+					obj.date = new Date().toLocaleDateString();
+					obj.id = i + 2;
+					data.push(obj);
+				}
+				var str = JSON.stringify(data);
+				sessionStorage["users"] = str;
+			}
+	
+			var datas = JSON.parse(sessionStorage["users"]).reverse();
+			return datas.length > 1 ? datas[1].id + 1 : datas.id + 1;
+		}
 	};
 
 /***/ },
 
-/***/ 70:
-/*!**************************!*\
-  !*** ./src/images/1.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
+/***/ 105:
+/*!**************************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/admin/login/register.vue ***!
+  \**************************************************************************************************************************/
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__.p + "images/f8db9259.1.jpg";
-
-/***/ },
-
-/***/ 71:
-/*!**************************!*\
-  !*** ./src/images/2.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/b5e29614.2.jpg";
-
-/***/ },
-
-/***/ 72:
-/*!**************************!*\
-  !*** ./src/images/3.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/11b3f34e.3.jpg";
-
-/***/ },
-
-/***/ 73:
-/*!**************************!*\
-  !*** ./src/images/4.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/89681310.4.jpg";
-
-/***/ },
-
-/***/ 74:
-/*!**************************!*\
-  !*** ./src/images/5.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/725a58ab.5.jpg";
-
-/***/ },
-
-/***/ 75:
-/*!**************************!*\
-  !*** ./src/images/6.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/b3638470.6.jpg";
-
-/***/ },
-
-/***/ 76:
-/*!**************************!*\
-  !*** ./src/images/7.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/d35f34f7.7.jpg";
-
-/***/ },
-
-/***/ 77:
-/*!**************************!*\
-  !*** ./src/images/8.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/dfd3ecb1.8.jpg";
-
-/***/ },
-
-/***/ 78:
-/*!**************************!*\
-  !*** ./src/images/9.jpg ***!
-  \**************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/e3a71e1e.9.jpg";
-
-/***/ },
-
-/***/ 81:
-/*!******************************!*\
-  !*** ./src/images/pic_1.jpg ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "images/3592d69e.pic_1.jpg";
+	module.exports = "\n<el-card class=\"box-card\">\n\t<div slot=\"header\" class=\"clearfix\">\n\t\t<span>用户注册中心</span>\n\t\t<span class=\"floatRight\">首页>管理中心</el-button>\n\t</div>\n\t<div class=\"login-content\">\n\t\t<el-form :rules=\"rules\" ref=\"ruleForm\" label-width=\"100px\" :model=\"formLabelAlign\">\n\t\t  <el-form-item label=\"用户名称\" prop=\"name\">\n\t\t    <el-input v-model=\"formLabelAlign.name\"></el-input>\n\t\t  </el-form-item>\n\t\t  <el-form-item label=\"密码\" prop=\"password\">\n\t\t    <el-input type=\"password\" v-model=\"formLabelAlign.password\"></el-input>\n\t\t  </el-form-item>\n\t\t  <el-form-item label=\"确认密码\" prop=\"password1\">\n\t\t    <el-input type=\"password\" v-model=\"formLabelAlign.password1\"></el-input>\n\t\t  </el-form-item>\n\t\t  <el-form-item style=\"padding-top:15px;\">\n\t\t    <el-button type=\"primary\" @click=\"submitForm('ruleForm')\">立即创建</el-button>\n\t\t    <el-button @click=\"resetForm('ruleForm')\">重置</el-button>\n\t\t  </el-form-item>\n\t\t</el-form>\n\t</div>\n</el-card>\n";
 
 /***/ }
 

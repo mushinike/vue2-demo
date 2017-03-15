@@ -23,9 +23,10 @@ var vue=new Vue(
 				obj["news"]=4;
 				obj["contact"]=5;
 				obj["message"]=6;
+				obj["message"]=7;
 				obj["index"]=1;
 				
-				this.activeIndex2=obj[routerName]||"4-1";
+				this.activeIndex2=obj[routerName];
 			}
 		}
 		/*,

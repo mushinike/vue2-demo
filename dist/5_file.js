@@ -1,68 +1,750 @@
-webpackJsonp([5],{5:/*!**************************************!*\
+webpackJsonp([5],[
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
+/*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
-function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var i={},r=0;r<this.length;r++){var s=this[r][0];"number"==typeof s&&(i[s]=!0)}for(r=0;r<t.length;r++){var a=t[r];"number"==typeof a[0]&&i[a[0]]||(n&&!a[2]?a[2]=n:n&&(a[2]="("+a[2]+") and ("+n+")"),e.push(a))}},e}},6:/*!*****************************************!*\
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 8 */
+/*!*****************************************!*\
   !*** ./~/vue-style-loader/addStyles.js ***!
   \*****************************************/
-function(e,t,n){function i(e,t){for(var n=0;n<e.length;n++){var i=e[n],r=d[i.id];if(r){r.refs++;for(var s=0;s<r.parts.length;s++)r.parts[s](i.parts[s]);for(;s<i.parts.length;s++)r.parts.push(p(i.parts[s],t))}else{for(var a=[],s=0;s<i.parts.length;s++)a.push(p(i.parts[s],t));d[i.id]={id:i.id,refs:1,parts:a}}}}function r(e){for(var t=[],n={},i=0;i<e.length;i++){var r=e[i],s=r[0],a=r[1],o=r[2],p=r[3],u={css:a,media:o,sourceMap:p};n[s]?n[s].parts.push(u):t.push(n[s]={id:s,parts:[u]})}return t}function s(e,t){var n=g(),i=v[v.length-1];if("top"===e.insertAt)i?i.nextSibling?n.insertBefore(t,i.nextSibling):n.appendChild(t):n.insertBefore(t,n.firstChild),v.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");n.appendChild(t)}}function a(e){e.parentNode.removeChild(e);var t=v.indexOf(e);t>=0&&v.splice(t,1)}function o(e){var t=document.createElement("style");return t.type="text/css",s(e,t),t}function p(e,t){var n,i,r;if(t.singleton){var s=h++;n=m||(m=o(t)),i=u.bind(null,n,s,!1),r=u.bind(null,n,s,!0)}else n=o(t),i=c.bind(null,n),r=function(){a(n)};return i(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;i(e=t)}else r()}}function u(e,t,n,i){var r=n?"":i.css;if(e.styleSheet)e.styleSheet.cssText=b(t,r);else{var s=document.createTextNode(r),a=e.childNodes;a[t]&&e.removeChild(a[t]),a.length?e.insertBefore(s,a[t]):e.appendChild(s)}}function c(e,t){var n=t.css,i=t.media,r=t.sourceMap;if(i&&e.setAttribute("media",i),r&&(n+="\n/*# sourceURL="+r.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */"),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}var d={},l=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},f=l(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),g=l(function(){return document.head||document.getElementsByTagName("head")[0]}),m=null,h=0,v=[];e.exports=function(e,t){if("object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");t=t||{},"undefined"==typeof t.singleton&&(t.singleton=f()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var n=r(e);return i(n,t),function(e){for(var s=[],a=0;a<n.length;a++){var o=n[a],p=d[o.id];p.refs--,s.push(p)}if(e){var u=r(e);i(u,t)}for(var a=0;a<s.length;a++){var p=s[a];if(0===p.refs){for(var c=0;c<p.parts.length;c++)p.parts[c]();delete d[p.id]}}}};var b=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},17:/*!**********************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+	
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */
+/*!**********************************!*\
   !*** ./src/images/hamburger.png ***!
   \**********************************/
-function(e,t,n){e.exports=n.p+"images/50e4091c.hamburger.png"},59:/*!*************************************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/50e4091c.hamburger.png";
+
+/***/ },
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */
+/*!*********************************************!*\
+  !*** ./src/components/Tools/pagination.vue ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./pagination.vue */ 57)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src\\components\\Tools\\pagination.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./pagination.vue */ 58)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-2e4a94bd/pagination.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 57 */
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Tools/pagination.vue ***!
+  \*********************************************************************************************************************************************************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  methods: {
+	    handleSizeChange: function handleSizeChange(val) {
+	      this.pageSize = val;
+	      this.$emit("size-change", val);
+	    },
+	    handleCurrentChange: function handleCurrentChange(val) {
+	      this.currentPage = val;
+	
+	      this.$emit("page-change", val);
+	    }
+	  },
+	  props: ["total", "pageSize", "pageSizes"],
+	  data: function data() {
+	    return {
+	      currentPage: 1
+	    };
+	  },
+	
+	  created: function created() {},
+	  watch: {
+	    $route: function $route() {
+	      this.currentPage = 1;
+	    }
+	  }
+	};
+
+/***/ },
+/* 58 */
+/*!**********************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Tools/pagination.vue ***!
+  \**********************************************************************************************************************/
+/***/ function(module, exports) {
+
+	module.exports = "\n<el-pagination\n  @size-change=\"handleSizeChange\"\n  @current-change=\"handleCurrentChange\"\n  :current-page=\"currentPage\"\n  :page-sizes=\"pageSizes\"\n  :page-size=\"pageSize\"\n  layout=\"total, sizes, prev, pager, next, jumper\"\n  :total=\"total\">\n</el-pagination>\n";
+
+/***/ },
+/* 59 */,
+/* 60 */
+/*!*************************************************!*\
+  !*** ./src/components/Product/product-list.vue ***!
+  \*************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue */ 61)
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./product-list.vue */ 63)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src\\components\\Product\\product-list.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./product-list.vue */ 75)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-f42705ea/product-list.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 61 */
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./~/vue-style-loader!./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Product/product-list.vue ***!
+  \**************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../../../~/css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue */ 62);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../../../~/vue-style-loader/addStyles.js */ 8)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 62 */
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Product/product-list.vue ***!
+  \*****************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 7)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.product-content{overflow: hidden;}\r\n.product-content-ul li{float:left;margin-right:36px;margin-bottom: 30px;}\r\n.product-content-ul li img{vertical-align: top;width:220px}\r\n.product-content-ul li.marginRight0{margin-right: 0;}\r\n.page-center{margin: 0 auto;text-align: center;}\r\n\t\r\n", "", {"version":3,"sources":["/./src/components/Product/product-list.vue?2908d610"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;AA2BA,iBAAA,iBAAA,CAAA;AACA,uBAAA,WAAA,kBAAA,oBAAA,CAAA;AACA,2BAAA,oBAAA,WAAA,CAAA;AACA,oCAAA,gBAAA,CAAA;AACA,aAAA,eAAA,mBAAA,CAAA","file":"product-list.vue","sourcesContent":["<template>\r\n\t<el-card class=\"box-card\">\r\n\t\t<div slot=\"header\" class=\"clearfix\">\r\n   \t\t\t<span >产品列表</span>\r\n   \t\t\t<span style=\"float:right\">首页>产品展示</span>\r\n  \t\t</div>\r\n\t\t<div class=\"product-content\">\r\n\t\t\t<ul class=\"clearfix product-content-ul\">\r\n\t\t\t\t<li v-for=\"(item,key,index) in items\" :class=\"{marginRight0:(key+1)%4==0}\">\r\n\t\t\t\t\t<el-card :body-style=\"{ padding: '5px' }\">\r\n\t\t\t\t\t\t<img src=\"../../images/hamburger.png\"  class=\"image\">\r\n\t\t\t\t\t\t<div >\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t<span>{{item.title}}</span>\r\n\t\t\t\t\t\t\t<div class=\"bottom clearfix\">\r\n\t\t\t\t\t\t\t  <span class=\"time\">{{item.date}}</span>\r\n\t\t\t\t\t\t\t  <router-link :to=\"{path:'/product/detail/',name:'product-detail',params:{id:item.id}}\">查看详情</router-link>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t    </el-card>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t\t<page class=\"page-center\" :total=\"total\" :page-size=\"pageSize\" :page-sizes=\"[8,16,24,50]\"  @size-change=\"sizeChange\"  @page-change=\"pageChange\"></page>\r\n\t\t</div>\r\n\t</el-card>\r\n</template>\r\n<style>\r\n.product-content{overflow: hidden;}\r\n.product-content-ul li{float:left;margin-right:36px;margin-bottom: 30px;}\r\n.product-content-ul li img{vertical-align: top;width:220px}\r\n.product-content-ul li.marginRight0{margin-right: 0;}\r\n.page-center{margin: 0 auto;text-align: center;}\r\n\t\r\n</style>\r\n\r\n<script>\r\nimport datas from \"./product-datas\";\r\nimport page from \"../Tools/pagination\";\r\n\r\nexport default{\r\n\tdata:function (){\r\n\t\treturn {\r\n\t\t\titems:[],\r\n\t\t\ttotal:0,\r\n\t\t\tpageSize:8\r\n\t\t}\r\n\t\t\r\n\t},\r\n\tbeforeRouteEnter:function(to,from,next){\r\n\t\tvar items=datas.getPageDatas(1,8);\r\n\t\t\r\n\t\tnext(function(vm){\r\n\t\t\tvm.items=items;\r\n\t\t\tvm.total=datas.total;\r\n\t\t});\r\n\t\t\r\n\t},\r\n\tmethods:{\r\n\t\tpageChange:function(val){\r\n\t\t\tthis.items=datas.getPageDatas(val,datas.pageNum);\r\n\t\t\tthis.total=datas.total;\r\n\t\t},\r\n\t\tsizeChange:function(val){\r\n\t\t\tthis.items=datas.getPageDatas(datas.pageIndex,val);\r\n\t\t\tthis.total=datas.total;\r\n\t\t\tthis.pageSize=val;\r\n\t\t},\r\n\t\tpageInit:function(){\r\n\t\t\tthis.items=datas.getPageDatas(1,8);\r\n\t\t\tthis.total=datas.total;\r\n\t\t}\r\n\t},\r\n\tmounted:function(){\r\n\r\n\t\t//this.pageInit();\r\n\t},\r\n\tcomponents:{\r\n\t\tpage\r\n\t},\r\n}\r\n\t\r\n</script>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 63 */
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Product/product-list.vue ***!
+  \*************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _productDatas = __webpack_require__(/*! ./product-datas */ 64);
+	
+	var _productDatas2 = _interopRequireDefault(_productDatas);
+	
+	var _pagination = __webpack_require__(/*! ../Tools/pagination */ 56);
+	
+	var _pagination2 = _interopRequireDefault(_pagination);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+		data: function data() {
+			return {
+				items: [],
+				total: 0,
+				pageSize: 8
+			};
+		},
+		beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+			var items = _productDatas2.default.getPageDatas(1, 8);
+	
+			next(function (vm) {
+				vm.items = items;
+				vm.total = _productDatas2.default.total;
+			});
+		},
+		methods: {
+			pageChange: function pageChange(val) {
+				this.items = _productDatas2.default.getPageDatas(val, _productDatas2.default.pageNum);
+				this.total = _productDatas2.default.total;
+			},
+			sizeChange: function sizeChange(val) {
+				this.items = _productDatas2.default.getPageDatas(_productDatas2.default.pageIndex, val);
+				this.total = _productDatas2.default.total;
+				this.pageSize = val;
+			},
+			pageInit: function pageInit() {
+				this.items = _productDatas2.default.getPageDatas(1, 8);
+				this.total = _productDatas2.default.total;
+			}
+		},
+		mounted: function mounted() {},
+		components: {
+			page: _pagination2.default
+		}
+	};
+
+/***/ },
+/* 64 */
+/*!*************************************************!*\
   !*** ./src/components/Product/product-datas.js ***!
   \*************************************************/
-function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={getOneData:function(e){var t={};/*! ../../images/pic_1.jpg */
-/*! ../../images/1.jpg */
-/*! ../../images/2.jpg */
-/*! ../../images/3.jpg */
-/*! ../../images/4.jpg */
-/*! ../../images/5.jpg */
-/*! ../../images/6.jpg */
-/*! ../../images/7.jpg */
-/*! ../../images/8.jpg */
-/*! ../../images/9.jpg */
-return t.id=e,t.title="产品名称"+e,t.content="产品内容"+e,t.date=(new Date).toLocaleDateString(),t.src=n(60),t.images=[],t.images.push(n(61)),t.images.push(n(62)),t.images.push(n(63)),t.images.push(n(64)),t.images.push(n(65)),t.images.push(n(66)),t.images.push(n(67)),t.images.push(n(68)),t.images.push(n(69)),t},getPageDatas:function(e,t){var i=[];this.total=3500,this.pageIndex=e,this.pageNum=t,e=e<1?1:e,t=t<0?0:t;var r=(e-1)*t+1,s=r+t;s=s>this.total?this.total+1:s;for(var a;r<s;r++)a={},a.id=r,a.title="产品名称"+r,a.content="产品内容"+r,a.date=(new Date).toLocaleDateString(),a.src=n(/*! ../../images/hamburger.png */17),a.images=[],a.images.push(n(/*! ../../images/1.jpg */61)),a.images.push(n(/*! ../../images/2.jpg */62)),a.images.push(n(/*! ../../images/3.jpg */63)),a.images.push(n(/*! ../../images/4.jpg */64)),a.images.push(n(/*! ../../images/5.jpg */65)),a.images.push(n(/*! ../../images/6.jpg */66)),a.images.push(n(/*! ../../images/7.jpg */67)),a.images.push(n(/*! ../../images/8.jpg */68)),a.images.push(n(/*! ../../images/9.jpg */69)),i.push(a);return i},total:0,pageIndex:0,pageNum:0}},60:/*!******************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		getOneData: function getOneData(id) {
+			var obj = {};
+			obj.id = id;
+			obj.title = "产品名称" + id;
+			obj.content = "产品内容" + id;
+			obj.date = new Date().toLocaleDateString();
+			obj.src = __webpack_require__(/*! ../../images/pic_1.jpg */ 65);
+			obj.images = [];
+			obj.images.push(__webpack_require__(/*! ../../images/1.jpg */ 66));
+			obj.images.push(__webpack_require__(/*! ../../images/2.jpg */ 67));
+			obj.images.push(__webpack_require__(/*! ../../images/3.jpg */ 68));
+			obj.images.push(__webpack_require__(/*! ../../images/4.jpg */ 69));
+			obj.images.push(__webpack_require__(/*! ../../images/5.jpg */ 70));
+			obj.images.push(__webpack_require__(/*! ../../images/6.jpg */ 71));
+			obj.images.push(__webpack_require__(/*! ../../images/7.jpg */ 72));
+			obj.images.push(__webpack_require__(/*! ../../images/8.jpg */ 73));
+			obj.images.push(__webpack_require__(/*! ../../images/9.jpg */ 74));
+	
+			return obj;
+		},
+		getPageDatas: function getPageDatas(pageIndex, pageNum) {
+			var retArrs = [];
+			this.total = 3500;
+			this.pageIndex = pageIndex;
+			this.pageNum = pageNum;
+			pageIndex = pageIndex < 1 ? 1 : pageIndex;
+			pageNum = pageNum < 0 ? 0 : pageNum;
+			var pageStart = (pageIndex - 1) * pageNum;
+			var pageEnd = pageStart + pageNum;
+			pageEnd = pageEnd > this.total ? this.total + 1 : pageEnd;
+			var obj;
+	
+			for (; pageStart < pageEnd; pageStart++) {
+				obj = {};
+				obj.id = pageStart;
+				obj.title = "产品名称" + pageStart;
+				obj.content = "产品内容" + pageStart;
+				obj.date = new Date().toLocaleDateString();
+				obj.src = __webpack_require__(/*! ../../images/hamburger.png */ 19);
+				obj.images = [];
+				obj.images.push(__webpack_require__(/*! ../../images/1.jpg */ 66));
+				obj.images.push(__webpack_require__(/*! ../../images/2.jpg */ 67));
+				obj.images.push(__webpack_require__(/*! ../../images/3.jpg */ 68));
+				obj.images.push(__webpack_require__(/*! ../../images/4.jpg */ 69));
+				obj.images.push(__webpack_require__(/*! ../../images/5.jpg */ 70));
+				obj.images.push(__webpack_require__(/*! ../../images/6.jpg */ 71));
+				obj.images.push(__webpack_require__(/*! ../../images/7.jpg */ 72));
+				obj.images.push(__webpack_require__(/*! ../../images/8.jpg */ 73));
+				obj.images.push(__webpack_require__(/*! ../../images/9.jpg */ 74));
+	
+				retArrs.push(obj);
+			}
+	
+			return retArrs;
+		},
+		total: 0,
+		pageIndex: 0,
+		pageNum: 0
+	
+	};
+
+/***/ },
+/* 65 */
+/*!******************************!*\
   !*** ./src/images/pic_1.jpg ***!
   \******************************/
-function(e,t,n){e.exports=n.p+"images/3592d69e.pic_1.jpg"},61:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/3592d69e.pic_1.jpg";
+
+/***/ },
+/* 66 */
+/*!**************************!*\
   !*** ./src/images/1.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/f8db9259.1.jpg"},62:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/f8db9259.1.jpg";
+
+/***/ },
+/* 67 */
+/*!**************************!*\
   !*** ./src/images/2.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/b5e29614.2.jpg"},63:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/b5e29614.2.jpg";
+
+/***/ },
+/* 68 */
+/*!**************************!*\
   !*** ./src/images/3.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/11b3f34e.3.jpg"},64:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/11b3f34e.3.jpg";
+
+/***/ },
+/* 69 */
+/*!**************************!*\
   !*** ./src/images/4.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/89681310.4.jpg"},65:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/89681310.4.jpg";
+
+/***/ },
+/* 70 */
+/*!**************************!*\
   !*** ./src/images/5.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/725a58ab.5.jpg"},66:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/725a58ab.5.jpg";
+
+/***/ },
+/* 71 */
+/*!**************************!*\
   !*** ./src/images/6.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/b3638470.6.jpg"},67:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/b3638470.6.jpg";
+
+/***/ },
+/* 72 */
+/*!**************************!*\
   !*** ./src/images/7.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/d35f34f7.7.jpg"},68:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/d35f34f7.7.jpg";
+
+/***/ },
+/* 73 */
+/*!**************************!*\
   !*** ./src/images/8.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/dfd3ecb1.8.jpg"},69:/*!**************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/dfd3ecb1.8.jpg";
+
+/***/ },
+/* 74 */
+/*!**************************!*\
   !*** ./src/images/9.jpg ***!
   \**************************/
-function(e,t,n){e.exports=n.p+"images/e3a71e1e.9.jpg"},71:/*!***************************************************!*\
-  !*** ./src/components/Product/product-detail.vue ***!
-  \***************************************************/
-function(e,t,n){var i,r,s={};n(/*! !vue-style-loader!css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./product-detail.vue */72),i=n(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./product-detail.vue */74),r=n(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./product-detail.vue */75),e.exports=i||{},e.exports.__esModule&&(e.exports=e.exports.default);var a="function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports;r&&(a.template=r),a.computed||(a.computed={}),Object.keys(s).forEach(function(e){var t=s[e];a.computed[e]=function(){return t}})},72:/*!******************************************************************************************************************************************************************************!*\
-  !*** ./~/vue-style-loader!./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Product/product-detail.vue ***!
-  \******************************************************************************************************************************************************************************/
-function(e,t,n){var i=n(/*! !../../../~/css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./product-detail.vue */73);"string"==typeof i&&(i=[[e.id,i,""]]);n(/*! ../../../~/vue-style-loader/addStyles.js */6)(i,{});i.locals&&(e.exports=i.locals)},73:/*!*********************************************************************************************************************************************************!*\
-  !*** ./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Product/product-detail.vue ***!
-  \*********************************************************************************************************************************************************/
-function(e,t,n){t=e.exports=n(/*! ../../../~/css-loader/lib/css-base.js */5)(),t.push([e.id,".product-detail-image{float:left;display:inline;margin-left:100px;margin-bottom:50px;margin-right:50px}.product-detail-title{float:left}.product-detail-body{margin-bottom:50px}",""])},74:/*!***************************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Product/product-detail.vue ***!
-  \***************************************************************************************************************************************************************************************/
-function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var r=n(/*! ./product-datas */59),s=i(r);t.default={data:function(){return{item:{}}},beforeRouteEnter:function(e,t,n){var i=s.default.getOneData(e.params.id);n(function(e){e.item=i})},mounted:function(){}}},75:/*!****************************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Product/product-detail.vue ***!
-  \****************************************************************************************************************************/
-function(e,t){e.exports=' <el-card class=box-card> <div slot=header class=clearfix> <span>产品明细</span> <span style=float:right>首页>产品展示</span> </div> <div class=product-detail-content> <div> <div class=product-detail-image><img :src=item.src /></div> <div class=product-detail-title> <h3>{{item.title}}</h3> <br/> <p>{{item.date}}</p> </div> </div> <div class="product-detail-body clearfix"> <el-tabs active-name=second type=card> <el-tab-pane label=产品内容 name=first>{{item.content}}</el-tab-pane> <el-tab-pane label=图片展示 name=second> <div v-for="img in item.images"><img :src=img /></div> </el-tab-pane> </el-tabs> </div> </div> </el-card> '}});
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/e3a71e1e.9.jpg";
+
+/***/ },
+/* 75 */
+/*!**************************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Product/product-list.vue ***!
+  \**************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\t<el-card class=\"box-card\">\n\t\t<div slot=\"header\" class=\"clearfix\">\n   \t\t\t<span >产品列表</span>\n   \t\t\t<span style=\"float:right\">首页>产品展示</span>\n  \t\t</div>\n\t\t<div class=\"product-content\">\n\t\t\t<ul class=\"clearfix product-content-ul\">\n\t\t\t\t<li v-for=\"(item,key,index) in items\" :class=\"{marginRight0:(key+1)%4==0}\">\n\t\t\t\t\t<el-card :body-style=\"{ padding: '5px' }\">\n\t\t\t\t\t\t<img src=\"" + __webpack_require__(/*! ../../images/hamburger.png */ 19) + "\"  class=\"image\">\n\t\t\t\t\t\t<div >\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<span>{{item.title}}</span>\n\t\t\t\t\t\t\t<div class=\"bottom clearfix\">\n\t\t\t\t\t\t\t  <span class=\"time\">{{item.date}}</span>\n\t\t\t\t\t\t\t  <router-link :to=\"{path:'/product/detail/',name:'product-detail',params:{id:item.id}}\">查看详情</router-link>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t    </el-card>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<page class=\"page-center\" :total=\"total\" :page-size=\"pageSize\" :page-sizes=\"[8,16,24,50]\"  @size-change=\"sizeChange\"  @page-change=\"pageChange\"></page>\n\t\t</div>\n\t</el-card>\n";
+
+/***/ }
+]);
+//# sourceMappingURL=5_file.js.map

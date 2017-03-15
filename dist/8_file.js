@@ -1,98 +1,895 @@
-webpackJsonp([8],[,,/*!****************************************!*\
-  !*** ./src/components/Index/index.vue ***!
-  \****************************************/
-function(e,t,o){var n,r,i={};o(/*! !vue-style-loader!css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./index.vue */3),n=o(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./index.vue */7),r=o(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./index.vue */28),e.exports=n||{},e.exports.__esModule&&(e.exports=e.exports.default);var s="function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports;r&&(s.template=r),s.computed||(s.computed={}),Object.keys(i).forEach(function(e){var t=i[e];s.computed[e]=function(){return t}})},/*!*******************************************************************************************************************************************************************!*\
-  !*** ./~/vue-style-loader!./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Index/index.vue ***!
-  \*******************************************************************************************************************************************************************/
-function(e,t,o){var n=o(/*! !../../../~/css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./index.vue */4);"string"==typeof n&&(n=[[e.id,n,""]]);o(/*! ../../../~/vue-style-loader/addStyles.js */6)(n,{});n.locals&&(e.exports=n.locals)},/*!**********************************************************************************************************************************************!*\
-  !*** ./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Index/index.vue ***!
-  \**********************************************************************************************************************************************/
-function(e,t,o){t=e.exports=o(/*! ../../../~/css-loader/lib/css-base.js */5)(),t.push([e.id,".borderRight{border-right:1px solid #999}.card-title{height:40px;line-height:30px;font-size:15px;font-weight:700;padding-bottom:10px}footer{margin:0 auto;text-align:center;height:30px;line-height:30px}",""])},/*!**************************************!*\
+webpackJsonp([8],{
+
+/***/ 7:
+/*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
-function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var o=this[t];o[2]?e.push("@media "+o[2]+"{"+o[1]+"}"):e.push(o[1])}return e.join("")},e.i=function(t,o){"string"==typeof t&&(t=[[null,t,""]]);for(var n={},r=0;r<this.length;r++){var i=this[r][0];"number"==typeof i&&(n[i]=!0)}for(r=0;r<t.length;r++){var s=t[r];"number"==typeof s[0]&&n[s[0]]||(o&&!s[2]?s[2]=o:o&&(s[2]="("+s[2]+") and ("+o+")"),e.push(s))}},e}},/*!*****************************************!*\
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+
+/***/ 8:
+/*!*****************************************!*\
   !*** ./~/vue-style-loader/addStyles.js ***!
   \*****************************************/
-function(e,t,o){function n(e,t){for(var o=0;o<e.length;o++){var n=e[o],r=p[n.id];if(r){r.refs++;for(var i=0;i<r.parts.length;i++)r.parts[i](n.parts[i]);for(;i<n.parts.length;i++)r.parts.push(u(n.parts[i],t))}else{for(var s=[],i=0;i<n.parts.length;i++)s.push(u(n.parts[i],t));p[n.id]={id:n.id,refs:1,parts:s}}}}function r(e){for(var t=[],o={},n=0;n<e.length;n++){var r=e[n],i=r[0],s=r[1],a=r[2],u=r[3],c={css:s,media:a,sourceMap:u};o[i]?o[i].parts.push(c):t.push(o[i]={id:i,parts:[c]})}return t}function i(e,t){var o=h(),n=m[m.length-1];if("top"===e.insertAt)n?n.nextSibling?o.insertBefore(t,n.nextSibling):o.appendChild(t):o.insertBefore(t,o.firstChild),m.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");o.appendChild(t)}}function s(e){e.parentNode.removeChild(e);var t=m.indexOf(e);t>=0&&m.splice(t,1)}function a(e){var t=document.createElement("style");return t.type="text/css",i(e,t),t}function u(e,t){var o,n,r;if(t.singleton){var i=x++;o=v||(v=a(t)),n=c.bind(null,o,i,!1),r=c.bind(null,o,i,!0)}else o=a(t),n=l.bind(null,o),r=function(){s(o)};return n(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;n(e=t)}else r()}}function c(e,t,o,n){var r=o?"":n.css;if(e.styleSheet)e.styleSheet.cssText=g(t,r);else{var i=document.createTextNode(r),s=e.childNodes;s[t]&&e.removeChild(s[t]),s.length?e.insertBefore(i,s[t]):e.appendChild(i)}}function l(e,t){var o=t.css,n=t.media,r=t.sourceMap;if(n&&e.setAttribute("media",n),r&&(o+="\n/*# sourceURL="+r.sources[0]+" */",o+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */"),e.styleSheet)e.styleSheet.cssText=o;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(o))}}var p={},d=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},f=d(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),h=d(function(){return document.head||document.getElementsByTagName("head")[0]}),v=null,x=0,m=[];e.exports=function(e,t){if("object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");t=t||{},"undefined"==typeof t.singleton&&(t.singleton=f()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var o=r(e);return n(o,t),function(e){for(var i=[],s=0;s<o.length;s++){var a=o[s],u=p[a.id];u.refs--,i.push(u)}if(e){var c=r(e);n(c,t)}for(var s=0;s<i.length;s++){var u=i[s];if(0===u.refs){for(var l=0;l<u.parts.length;l++)u.parts[l]();delete p[u.id]}}}};var g=function(){var e=[];return function(t,o){return e[t]=o,e.filter(Boolean).join("\n")}}()},/*!****************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Index/index.vue ***!
-  \****************************************************************************************************************************************************************************/
-function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var r=o(/*! ./index-about.vue */8),i=n(r),s=o(/*! ./index-product.vue */14),a=n(s),u=o(/*! ./index-news.vue */18),c=n(u),l=o(/*! ./index-carousel.vue */25),p=n(l);t.default={data:function(){return{}},methods:{handleClick:function(e,t){}},components:{carousel:p.default,about:i.default,product:a.default,news:c.default}}},/*!**********************************************!*\
-  !*** ./src/components/Index/index-about.vue ***!
-  \**********************************************/
-function(e,t,o){var n,r,i={};o(/*! !vue-style-loader!css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./index-about.vue */9),n=o(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./index-about.vue */11),r=o(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./index-about.vue */13),e.exports=n||{},e.exports.__esModule&&(e.exports=e.exports.default);var s="function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports;r&&(s.template=r),s.computed||(s.computed={}),Object.keys(i).forEach(function(e){var t=i[e];s.computed[e]=function(){return t}})},/*!*************************************************************************************************************************************************************************!*\
-  !*** ./~/vue-style-loader!./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Index/index-about.vue ***!
-  \*************************************************************************************************************************************************************************/
-function(e,t,o){var n=o(/*! !../../../~/css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./index-about.vue */10);"string"==typeof n&&(n=[[e.id,n,""]]);o(/*! ../../../~/vue-style-loader/addStyles.js */6)(n,{});n.locals&&(e.exports=n.locals)},/*!****************************************************************************************************************************************************!*\
-  !*** ./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Index/index-about.vue ***!
-  \****************************************************************************************************************************************************/
-function(e,t,o){t=e.exports=o(/*! ../../../~/css-loader/lib/css-base.js */5)(),t.push([e.id,".index-about-title{font-size:15px;font-weight:700}.el-card__header{padding:10px}",""])},/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Index/index-about.vue ***!
-  \**********************************************************************************************************************************************************************************/
-function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var r=o(/*! ../About/about-content.js */12),i=n(r);t.default={data:function(){return{message:""}},created:function(){console.log(564)},mounted:function(){this.$root.about?this.message=this.$root.about:this.$root.about=this.message=i.default.getAboutData()},computed:{aboutContent:function(){return this.message.length>350?this.message.slice(0,350)+"...":this.message}}}},/*!***********************************************!*\
-  !*** ./src/components/About/about-content.js ***!
-  \***********************************************/
-function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={getAboutData:function(){return"腾讯成立于1998年11月，是目前中国领先的互联网增值服务提供商之一。成立10多年以来，腾讯一直秉承“一切以用户价值为依归”的经营理念，为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展的状态。2004年6月16日，腾讯控股有限公司在香港联交所主板公开上市（股票代号700）。通过互联网服务提升人类生活品质是腾讯的使命。目前，腾讯把“连接一切”作为战略目标，提供社交平台与数字内容两项核心服务。通过即时通信工具QQ、移动社交和通信服务微信和WeChat、门户网站腾讯网（QQ.com）、腾讯游戏、社交网络平台QQ空间等中国领先的网络平台，满足互联网用户沟通、资讯、娱乐和金融等方面的需求。截至2016年第二季度，QQ的月活跃帐户数达到8.99亿，最高同时在线帐户数达到2.47亿；微信和WeChat的合并月活跃帐户数达8.06亿。腾讯的发展深刻地影响和改变了数以亿计网民的沟通方式和生活习惯，并为中国互联网行业开创了更加广阔的应用前景。面向未来，坚持自主创新，树立民族品牌是腾讯的长远发展规划。目前，腾讯50%以上员工为研发人员，拥有完善的自主研发体系，在存储技术、数据挖掘、多媒体、中文处理、分布式网络、无线技术六大方向都拥有了相当数量的专利，在全球互联网企业中专利申请和授权总量均位居前列。成为最受尊敬的互联网企业是腾讯的远景目标。腾讯一直积极参与公益事业、努力承担企业社会责任、推动网络文明。2006年，腾讯成立了中国互联网首家慈善公益基金会——腾讯慈善公益基金会，并建立了腾讯公益网（gongyi.qq.com）。秉承“致力公益慈善事业，关爱青少年成长，倡导企业公民责任，推动社会和谐进步”的宗旨，腾讯的每一项产品与业务都拥抱公益，开放互联，并倡导所有企业一起行动，通过互联网领域的技术、传播优势，缔造“人人可公益，民众齐参与”的互联网公益新生态。"}}},/*!***********************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Index/index-about.vue ***!
-  \***********************************************************************************************************************/
-function(e,t){e.exports=' <div> <el-card class=box-card> <div slot=header class="clearfix index-about-title">公司简介</div> <div class="text item">{{aboutContent}}</div> </el-card> </div> '},/*!************************************************!*\
-  !*** ./src/components/Index/index-product.vue ***!
-  \************************************************/
-function(e,t,o){var n,r,i={};n=o(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./index-product.vue */15),r=o(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./index-product.vue */16),e.exports=n||{},e.exports.__esModule&&(e.exports=e.exports.default);var s="function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports;r&&(s.template=r),s.computed||(s.computed={}),Object.keys(i).forEach(function(e){var t=i[e];s.computed[e]=function(){return t}})},/*!************************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Index/index-product.vue ***!
-  \************************************************************************************************************************************************************************************/
-function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={data:function(){return{items:[{title:"产品名称1",id:1,content:"产品描述1",src:"000",date:"2017-3-8"},{title:"产品名称2",id:2,content:"产品描述2",src:"000",date:"2017-3-8"},{title:"产品名称3",id:3,content:"产品描述3",src:"000",date:"2017-3-8"}]}}}},/*!*************************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Index/index-product.vue ***!
-  \*************************************************************************************************************************/
-function(e,t,o){e.exports=' <div> <el-row> <el-col :span=6 v-for="(o, index) in items" :offset="index > 0 ? 2 : 0"> <el-card> <img src='+o(/*! ../../images/hamburger.png */17)+' width=150> <div style="padding: 14px"> <span>{{o.title}}</span> <div class="bottom clearfix"> <time class=time>{{ o.date }}</time> <el-button type=text class=button>查看详细</el-button> </div> </div> </el-card> </el-col> </el-row> </div> '},/*!**********************************!*\
-  !*** ./src/images/hamburger.png ***!
-  \**********************************/
-function(e,t,o){e.exports=o.p+"images/50e4091c.hamburger.png"},/*!*********************************************!*\
-  !*** ./src/components/Index/index-news.vue ***!
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+	
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+
+/***/ 56:
+/*!*********************************************!*\
+  !*** ./src/components/Tools/pagination.vue ***!
   \*********************************************/
-function(e,t,o){var n,r,i={};o(/*! !vue-style-loader!css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./index-news.vue */19),n=o(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./index-news.vue */21),r=o(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./index-news.vue */24),e.exports=n||{},e.exports.__esModule&&(e.exports=e.exports.default);var s="function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports;r&&(s.template=r),s.computed||(s.computed={}),Object.keys(i).forEach(function(e){var t=i[e];s.computed[e]=function(){return t}})},/*!************************************************************************************************************************************************************************!*\
-  !*** ./~/vue-style-loader!./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Index/index-news.vue ***!
-  \************************************************************************************************************************************************************************/
-function(e,t,o){var n=o(/*! !../../../~/css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./index-news.vue */20);"string"==typeof n&&(n=[[e.id,n,""]]);o(/*! ../../../~/vue-style-loader/addStyles.js */6)(n,{});n.locals&&(e.exports=n.locals)},/*!***************************************************************************************************************************************************!*\
-  !*** ./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Index/index-news.vue ***!
-  \***************************************************************************************************************************************************/
-function(e,t,o){t=e.exports=o(/*! ../../../~/css-loader/lib/css-base.js */5)(),t.push([e.id,".index-news-item{line-height:28px;list-style-position:inside;padding-left:15px}",""])},/*!*********************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Index/index-news.vue ***!
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./pagination.vue */ 57)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src\\components\\Tools\\pagination.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./pagination.vue */ 58)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-2e4a94bd/pagination.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 57:
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Tools/pagination.vue ***!
   \*********************************************************************************************************************************************************************************/
-function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var r=o(/*! ../News/news-datas.js */22),i=n(r);t.default={data:function(){return{items:i.default.getPageDatas(0,1,10)}}}},/*!*******************************************!*\
-  !*** ./src/components/News/news-datas.js ***!
-  \*******************************************/
-function(e,t,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={getData:function(e,t){var n,r=1==t?"公司新闻":"行业新闻";/*! ../../images/news-image.png */
-return n={},n.id=e,n.type=t,n.title=r+" 新闻名称"+e,n.content="新闻内容"+e,n.date=(new Date).toLocaleDateString(),n.src=o(23),n},getPageDatas:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:1,t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:20,r=[];this.total=3500,this.pageIndex=t,this.pageNum=n,t=t<1?1:t,n=n<0?0:n;var i,s=(t-1)*n+1,a=s+n,u="";for(0!=e&&(u=1==e?"公司新闻":"行业新闻");s<a;s++)i={},i.id=s,i.type=e,i.title=u+" 新闻名称"+s,i.content="新闻内容"+s,i.date=(new Date).toLocaleDateString(),i.src=o(/*! ../../images/news-image.png */23),r.push(i);return r},total:0,pageIndex:0,pageNum:0}},/*!***********************************!*\
-  !*** ./src/images/news-image.png ***!
-  \***********************************/
-function(e,t,o){e.exports=o.p+"images/81010731.news-image.png"},/*!**********************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Index/index-news.vue ***!
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  methods: {
+	    handleSizeChange: function handleSizeChange(val) {
+	      this.pageSize = val;
+	      this.$emit("size-change", val);
+	    },
+	    handleCurrentChange: function handleCurrentChange(val) {
+	      this.currentPage = val;
+	
+	      this.$emit("page-change", val);
+	    }
+	  },
+	  props: ["total", "pageSize", "pageSizes"],
+	  data: function data() {
+	    return {
+	      currentPage: 1
+	    };
+	  },
+	
+	  created: function created() {},
+	  watch: {
+	    $route: function $route() {
+	      this.currentPage = 1;
+	    }
+	  }
+	};
+
+/***/ },
+
+/***/ 58:
+/*!**********************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Tools/pagination.vue ***!
   \**********************************************************************************************************************/
-function(e,t){e.exports=' <div> <ul> <li v-for="(value,key) in items" class="text item index-news-item"> {{\'列表名称 \' + value.title }} </li> </ul> </div> '},/*!*************************************************!*\
-  !*** ./src/components/Index/index-carousel.vue ***!
+/***/ function(module, exports) {
+
+	module.exports = "\n<el-pagination\n  @size-change=\"handleSizeChange\"\n  @current-change=\"handleCurrentChange\"\n  :current-page=\"currentPage\"\n  :page-sizes=\"pageSizes\"\n  :page-size=\"pageSize\"\n  layout=\"total, sizes, prev, pager, next, jumper\"\n  :total=\"total\">\n</el-pagination>\n";
+
+/***/ },
+
+/***/ 86:
+/*!*************************************************!*\
+  !*** ./src/components/Message/message-list.vue ***!
   \*************************************************/
-function(e,t,o){var n,r,i={};n=o(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./index-carousel.vue */26),r=o(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./index-carousel.vue */27),e.exports=n||{},e.exports.__esModule&&(e.exports=e.exports.default);var s="function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports;r&&(s.template=r),s.computed||(s.computed={}),Object.keys(i).forEach(function(e){var t=i[e];s.computed[e]=function(){return t}})},/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Index/index-carousel.vue ***!
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./message-list.vue */ 87)
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./message-list.vue */ 89)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src\\components\\Message\\message-list.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./message-list.vue */ 99)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-18d0b64a/message-list.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 87:
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./~/vue-style-loader!./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Message/message-list.vue ***!
+  \**************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../../../~/css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./message-list.vue */ 88);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../../../~/vue-style-loader/addStyles.js */ 8)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./message-list.vue", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./message-list.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 88:
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Message/message-list.vue ***!
+  \*****************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 7)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.page-center{margin: auto;text-align: center;}\r\n", "", {"version":3,"sources":["/./src/components/Message/message-list.vue?4feb89c0"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAuJA,aAAA,aAAA,mBAAA,CAAA","file":"message-list.vue","sourcesContent":["<template>\r\n\t<el-card class=\"box-card\">\r\n\t\t<div slot=\"header\" class=\"clearfix\">\r\n   \t\t\t<span >留言列表</span>\r\n   \t\t\t<span style=\"float:right\">首页>留言中心</span>\r\n  \t\t</div>\r\n\t\t<div class=\"message-content\">\r\n\t\t\t<el-button type=\"primary\"  @click=\"handleAdd()\">添加</el-button>\r\n\t\t\t<el-table\r\n\t\t\t:data=\"items\"\r\n\t\t\tborder\r\n\t\t\tstyle=\"width: 100%\"\r\n\t\t\t@selection-change=\"handleSelectionChange\">\r\n\t\t\t\t<el-table-column\r\n\t\t\t\t  type=\"selection\"\r\n\t\t\t\t  width=\"50\">\r\n\t\t\t\t</el-table-column>\r\n\t\t\t\t<el-table-column\r\n\t\t\t\t  label=\"日期\"\r\n\t\t\t\t  width=\"150\">\r\n\t\t\t\t  <template scope=\"scope\">{{ scope.row.date }}</template>\r\n\t\t\t\t</el-table-column>\r\n\t\t\t\t<el-table-column\r\n\t\t\t\t  prop=\"name\"\r\n\t\t\t\t  label=\"姓名\"\r\n\t\t\t\t  width=\"120\">\r\n\t\t\t\t</el-table-column>\r\n\t\t\t\t<el-table-column\r\n\t\t\t\t  prop=\"email\"\r\n\t\t\t\t  label=\"邮箱\"\r\n\t\t\t\t  width=\"140\">\r\n\t\t\t\t</el-table-column>\r\n\t\t\t\t<el-table-column\r\n\t\t\t\t  prop=\"qq\"\r\n\t\t\t\t  label=\"QQ\"\r\n\t\t\t\t  width=\"100\">\r\n\t\t\t\t</el-table-column>\r\n\t\t\t\t<el-table-column\r\n\t\t\t\t  prop=\"address\"\r\n\t\t\t\t  label=\"地址\"\r\n\t\t\t\t  show-overflow-tooltip>\r\n\t\t\t\t</el-table-column>\r\n\t\t\t\t<el-table-column label=\"操作\" width=\"150\">\r\n\t\t\t\t\t  <template scope=\"scope\">\r\n\t\t\t\t        <el-button\r\n\t\t\t\t          size=\"small\"\r\n\t\t\t\t          @click=\"handleEdit(scope.$index, scope.row)\">编辑</el-button>\r\n\t\t\t\t        <el-button\r\n\t\t\t\t          size=\"small\"\r\n\t\t\t\t          type=\"danger\"\r\n\t\t\t\t          @click=\"handleDelete(scope.$index, scope.row)\">删除</el-button>\r\n\t\t\t\t      </template>\r\n\t\t\t\t</el-table-column>\r\n\t\t\t</el-table>\r\n\t\t\t<br />\r\n\t\t\t<page class=\"page-center clearfix\" :total=\"total\" :page-size=\"pageSize\" :page-sizes=\"[10,20,40,100]\"  @size-change=\"sizeChange\"  @page-change=\"pageChange\"></page>\r\n\t\t\t\r\n\t\t\t\r\n\t\t</div>\r\n\t\t<mydialog :dialog-visible=\"showFlag\" :dialog-item=\"item\" :dialog-action=\"action\" @dialog-close=\"dialogClose\"></mydialog>\r\n\r\n\t</el-card>\r\n</template>\r\n\r\n<script>\r\nimport message from \"./message-datas\";\r\nimport mydialog from \"./message-dialog\";\r\nimport page from \"../Tools/pagination\";\r\n\t\r\nexport default{\r\n\tdata:function(){\r\n\t\treturn {\r\n\t\t\titems:[],\r\n\t\t\tselectItems:[],\r\n\t\t\ttotal:0,\r\n\t\t\tpageSize:10,\r\n\t\t\tshowFlag:false,\r\n\t\t\titem:{},\r\n\t\t\taction:\"\"\r\n\t\t}\r\n\t},\r\n\tcomponents:{\r\n\t\tpage,\r\n\t\tmydialog\r\n\t},\r\n\tmethods:{\r\n\t\thandleAdd:function(){\r\n\t\t\tthis.showFlag=true;\r\n\t\t\tthis.action=\"add\";\r\n\t\t},\r\n\t\thandleEdit:function(index, row){\r\n\t\t\tthis.item=row;\r\n\t\t\tthis.showFlag=true;\r\n\t\t\tthis.action=\"edit\";\r\n\t\t},\r\n\t\thandleDelete:function(index, row){\r\n\t\t\tmessage.deleted(row.id);\r\n\t\t\tthis.pageInit(message.pageIndex,message.pageNum);\r\n\t\t},\r\n\t\thandleSelectionChange:function(selectItems){\r\n\t\t\tthis.selectItems=selectItems;\r\n\t\t\t\r\n\t\t},\r\n\t\tpageChange:function(val){\r\n\t\t\tthis.items=message.getPageDatas(val,message.pageNum);\r\n\t\t\tthis.total=message.total;\r\n\t\t},\r\n\t\tsizeChange:function(val){\r\n\t\t\tthis.items=message.getPageDatas(message.pageIndex,val);\r\n\t\t\tthis.total=message.total;\r\n\t\t\tthis.pageSize=val;\r\n\t\t},\r\n\t\tpageInit:function(pageIndex=1,pageNum=10){\r\n\t\t\tthis.items=message.getPageDatas(pageIndex,pageNum);\r\n\t\t\tthis.total=message.total;\r\n\t\t},\r\n\t\tdialogClose:function(saveflag){\r\n\t\t\tthis.showFlag=false;\r\n\t\t\t//saveflag \r\n\t\t\tif(saveflag==true){\r\n\t\t\t\tthis.pageInit(message.pageIndex,message.pageNum);\r\n\t\t\t}\r\n\t\t\t\r\n\t\t}\r\n\t},\r\n\tcreated:function(){\r\n\t\tif(!sessionStorage[\"message\"]){\r\n\t\t\tvar datas=[],obj;\r\n\t\t\tfor(var i=0,ii=35;i<ii;i++){\r\n\t\t\t\tobj={};\r\n\t\t\t\tobj.id=i+1;\r\n\t\t\t\tobj.qq=\"10000\"+i;\r\n\t\t\t\tobj.email=\"10000\"+i+\"@qq.com\";\r\n\t\t\t\tobj.address=\"深圳南山区天朝公寓10\"+i;\r\n\t\t\t\tobj.name=\"路人_\"+(i+1);\r\n\t\t\t\tobj.desc=\"\";\r\n\t\t\t\tobj.date=(new Date).toLocaleDateString();\r\n\t\t\t\tdatas.push(obj);\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tsessionStorage[\"message\"]=JSON.stringify(datas);\r\n\t\t}\r\n\t},\r\n\tmounted:function(){\r\n\t\tthis.pageInit();\r\n\t}\r\n}\r\n\r\n</script>\r\n\r\n<style>\r\n.page-center{margin: auto;text-align: center;}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+
+/***/ 89:
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Message/message-list.vue ***!
   \*************************************************************************************************************************************************************************************/
-function(e,t,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={data:function(){return{items:[]}},mounted:function(){for(var e,t=1,n=5;t<n;t++)e={},e.src=o(/*! ../../images */97)("./flash"+t+".jpg"),e.title="轮询图"+t,e.desc="图片描述"+t,this.items.push(e)}}},/*!**************************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Index/index-carousel.vue ***!
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _stringify = __webpack_require__(/*! babel-runtime/core-js/json/stringify */ 90);
+	
+	var _stringify2 = _interopRequireDefault(_stringify);
+	
+	var _messageDatas = __webpack_require__(/*! ./message-datas */ 93);
+	
+	var _messageDatas2 = _interopRequireDefault(_messageDatas);
+	
+	var _messageDialog = __webpack_require__(/*! ./message-dialog */ 94);
+	
+	var _messageDialog2 = _interopRequireDefault(_messageDialog);
+	
+	var _pagination = __webpack_require__(/*! ../Tools/pagination */ 56);
+	
+	var _pagination2 = _interopRequireDefault(_pagination);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+		data: function data() {
+			return {
+				items: [],
+				selectItems: [],
+				total: 0,
+				pageSize: 10,
+				showFlag: false,
+				item: {},
+				action: ""
+			};
+		},
+		components: {
+			page: _pagination2.default,
+			mydialog: _messageDialog2.default
+		},
+		methods: {
+			handleAdd: function handleAdd() {
+				this.showFlag = true;
+				this.action = "add";
+			},
+			handleEdit: function handleEdit(index, row) {
+				this.item = row;
+				this.showFlag = true;
+				this.action = "edit";
+			},
+			handleDelete: function handleDelete(index, row) {
+				_messageDatas2.default.deleted(row.id);
+				this.pageInit(_messageDatas2.default.pageIndex, _messageDatas2.default.pageNum);
+			},
+			handleSelectionChange: function handleSelectionChange(selectItems) {
+				this.selectItems = selectItems;
+			},
+			pageChange: function pageChange(val) {
+				this.items = _messageDatas2.default.getPageDatas(val, _messageDatas2.default.pageNum);
+				this.total = _messageDatas2.default.total;
+			},
+			sizeChange: function sizeChange(val) {
+				this.items = _messageDatas2.default.getPageDatas(_messageDatas2.default.pageIndex, val);
+				this.total = _messageDatas2.default.total;
+				this.pageSize = val;
+			},
+			pageInit: function pageInit() {
+				var pageIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+				var pageNum = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+	
+				this.items = _messageDatas2.default.getPageDatas(pageIndex, pageNum);
+				this.total = _messageDatas2.default.total;
+			},
+			dialogClose: function dialogClose(saveflag) {
+				this.showFlag = false;
+	
+				if (saveflag == true) {
+					this.pageInit(_messageDatas2.default.pageIndex, _messageDatas2.default.pageNum);
+				}
+			}
+		},
+		created: function created() {
+			if (!sessionStorage["message"]) {
+				var datas = [],
+				    obj;
+				for (var i = 0, ii = 35; i < ii; i++) {
+					obj = {};
+					obj.id = i + 1;
+					obj.qq = "10000" + i;
+					obj.email = "10000" + i + "@qq.com";
+					obj.address = "深圳南山区天朝公寓10" + i;
+					obj.name = "路人_" + (i + 1);
+					obj.desc = "";
+					obj.date = new Date().toLocaleDateString();
+					datas.push(obj);
+				}
+	
+				sessionStorage["message"] = (0, _stringify2.default)(datas);
+			}
+		},
+		mounted: function mounted() {
+			this.pageInit();
+		}
+	};
+
+/***/ },
+
+/***/ 90:
+/*!***************************************************!*\
+  !*** ./~/babel-runtime/core-js/json/stringify.js ***!
+  \***************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(/*! core-js/library/fn/json/stringify */ 91), __esModule: true };
+
+/***/ },
+
+/***/ 91:
+/*!****************************************************************!*\
+  !*** ./~/babel-runtime/~/core-js/library/fn/json/stringify.js ***!
+  \****************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var core = __webpack_require__(/*! ../../modules/$.core */ 92);
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
+	};
+
+/***/ },
+
+/***/ 92:
+/*!*************************************************************!*\
+  !*** ./~/babel-runtime/~/core-js/library/modules/$.core.js ***!
+  \*************************************************************/
+/***/ function(module, exports) {
+
+	var core = module.exports = {version: '1.2.6'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
+
+/***/ 93:
+/*!*************************************************!*\
+  !*** ./src/components/Message/message-datas.js ***!
+  \*************************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		add: function add(obj) {
+			var datas = JSON.parse(sessionStorage["message"]);
+			datas.push(obj);
+			sessionStorage["message"] = JSON.stringify(datas);
+		},
+		deleted: function deleted(id) {
+			var datas = JSON.parse(sessionStorage["message"]);
+			var obj,
+			    i = 0,
+			    ii = datas.length;
+			for (; i < ii; i++) {
+				if (id == datas[i].id) {
+					obj = datas[i];
+					break;
+				}
+			}
+	
+			if (obj) {
+				datas.splice(i, 1);
+				sessionStorage["message"] = JSON.stringify(datas);
+				return true;
+			}
+	
+			return false;
+		},
+		edit: function edit(obj) {
+			var datas = JSON.parse(sessionStorage["message"]);
+			var i = 0,
+			    ii = datas.length;
+			for (; i < ii; i++) {
+				if (obj.id == datas[i].id) {
+					datas[i] = obj;
+					sessionStorage["message"] = JSON.stringify(datas);
+					return true;
+				}
+			}
+	
+			return false;
+		},
+		getOne: function getOne(id) {
+			var datas = JSON.parse(sessionStorage["message"]);
+			var i = 0,
+			    ii = datas.length;
+			for (; i < ii; i++) {
+				if (id == datas[i].id) {
+					return datas[i];
+				}
+			}
+	
+			return {};
+		},
+		getPageDatas: function getPageDatas(pageIndex, pageNum) {
+			var datas = JSON.parse(sessionStorage["message"]).reverse();
+			var retArrs;
+			this.total = datas.length;
+			this.pageIndex = pageIndex;
+			this.pageNum = pageNum;
+			pageIndex = pageIndex < 1 ? 1 : pageIndex;
+			pageNum = pageNum < 0 ? 0 : pageNum;
+			var pageStart = (pageIndex - 1) * pageNum;
+			var pageEnd = pageStart + pageNum > this.total ? this.total : pageStart + pageNum;
+	
+			retArrs = datas.slice(pageStart, pageEnd);
+	
+			return retArrs;
+		},
+		total: 0,
+		pageIndex: 0,
+		pageNum: 0,
+		id: 35
+	};
+
+/***/ },
+
+/***/ 94:
+/*!***************************************************!*\
+  !*** ./src/components/Message/message-dialog.vue ***!
+  \***************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./message-dialog.vue */ 95)
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./message-dialog.vue */ 97)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src\\components\\Message\\message-dialog.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./message-dialog.vue */ 98)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-42e6f745/message-dialog.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 95:
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./~/vue-style-loader!./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Message/message-dialog.vue ***!
+  \****************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../../../~/css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./message-dialog.vue */ 96);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../../../~/vue-style-loader/addStyles.js */ 8)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./message-dialog.vue", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./message-dialog.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 96:
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Message/message-dialog.vue ***!
+  \*******************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 7)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.message-dialog .el-dialog__body{padding:10px 20px;}\n.message-dialog .el-form-item__label{padding: 5px 12px 5px 0;}\n\n.message-dialog .el-dialog{-webkit-transform: translateX(-50%);}\n.message-dialog .el-input__inner{height:30px;}\n\n", "", {"version":3,"sources":["/./src/components/Message/message-dialog.vue?6d58f1d8"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAyHA,iCAAA,kBAAA,CAAA;AACA,qCAAA,wBAAA,CAAA;;AAEA,2BAAA,oCAAA,CAAA;AACA,iCAAA,YAAA,CAAA","file":"message-dialog.vue","sourcesContent":["<template>\r\n\t<el-dialog title=\"留言\" top=\"10%\" class=\"message-dialog\" v-model=\"dialogFormVisible\" @close=\"dialogClone\" @open=\"dialogOpen\">\r\n\t\t<el-form :model=\"myform\" :rules=\"rules\" ref=\"ruleForm\" >\r\n\t\t\t<el-form-item label=\"名字\" prop=\"name\">\r\n\t\t\t\t<el-input v-model=\"myform.name\" auto-complete=\"on\"></el-input>\r\n\t\t\t</el-form-item>\r\n\t\t\t<el-form-item label=\"QQ\" prop=\"qq\">\r\n\t\t\t\t<el-input v-model=\"myform.qq\" auto-complete=\"on\"></el-input>\r\n\t\t\t</el-form-item>\r\n\t\t\t<el-form-item label=\"邮箱\" prop=\"email\">\r\n\t\t\t\t<el-input v-model=\"myform.email\" auto-complete=\"on\"></el-input>\r\n\t\t\t</el-form-item>\r\n\t\t\t<el-form-item label=\"地址\" prop=\"address\">\r\n\t\t\t\t<el-input v-model=\"myform.address\" auto-complete=\"on\"></el-input>\r\n\t\t\t</el-form-item>\r\n\t\t\t\r\n\t\t\t<el-form-item label=\"内容\" prop=\"desc\">\r\n\t\t\t\t<el-input type=\"textarea\" v-model=\"myform.desc\"></el-input>\r\n\t\t\t</el-form-item>\r\n\t\t\t\r\n\t\t</el-form>\r\n\t\t<div slot=\"footer\" class=\"dialog-footer\">\r\n\t\t\t<el-button @click=\"dialogClone\">取 消</el-button>\r\n\t\t\t<el-button type=\"primary\" @click=\"submitForm('ruleForm')\">确 定</el-button>\r\n\t\t</div>\r\n\t</el-dialog>\r\n\r\n\t\r\n</template>\r\n\r\n<script>\r\nimport message from \"./message-datas\";\r\n\r\nexport default{\r\n\tdata:function(){\r\n\t\treturn {\r\n\t\t\tdialogFormVisible:false,\r\n\t\t\tmyform:{\r\n\t\t\t\tname:\"\",\r\n\t\t\t\temail:\"\",\r\n\t\t\t\tqq:\"\",\r\n\t\t\t\taddress:\"\",\r\n\t\t\t\tdesc:\"\",\r\n\t\t\t\tid:0,\r\n\t\t\t\tdate:\"\"\r\n\t\t\t},\r\n\t\t\trules:{\r\n\t\t\t\tname:[\r\n\t\t\t\t\t { required: true, message: '请输入名称', trigger: 'blur' },\r\n\t\t\t\t\t { min: 2, max: 6, message: '长度在 2到 6 个字符', trigger: 'blur'}\r\n\t\t\t\t],\r\n\t\t\t\tqq:[\r\n\t\t\t\t\t{required: true, message: '请输入QQ', trigger: 'blur'}\r\n\t\t\t\t],\r\n\t\t\t\temail:[\r\n\t\t\t\t\t{required: true, message: '请输入邮箱', trigger: 'blur'},\r\n\t\t\t\t\t{type:\"email\", message: '请输入正确的邮箱', trigger: 'blur'}\r\n\t\t\t\t],\r\n\t\t\t\tdesc:[{required: true, message: '请输入内容', trigger: 'blur'}]\r\n\t\t\t}\r\n\t\t}\r\n\t},\r\n\tprops:[\"dialogVisible\",\"dialogAction\",\"dialogItem\"],\r\n\tmethods:{\r\n\t\tsubmitForm:function(formName){\r\n\t\t\tvar _this=this;\r\n\t\t\t_this.$refs[formName].validate(function(valid){\r\n\t\t\t\tif(valid){\r\n\t\t\t\t\tif(_this.dialogAction==\"add\"){\r\n\t\t\t\t\t\tmessage.id=_this.myform.id=message.id+1;\r\n\t\t\t\t\t\tmessage.add(_this.myform);\r\n\t\t\t\t\t}else\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tmessage.edit(_this.myform);\r\n\t\t\t\t\t}\r\n\t\r\n\t\t\t\t\t_this.dialogClone(true);\r\n\t\t\t\t}\r\n\t\t\t\telse{\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t\t},\r\n\t\tdialogClone:function(flag){\r\n\t\t\tthis.dialogFormVisible=false;\r\n\t\t\tthis.$emit(\"dialog-close\",flag);\r\n\t\t\t\r\n\t\t},\r\n\t\tdialogOpen:function(){\r\n\t\t\tif(this.dialogAction==\"edit\"){\r\n\t\t\t\tthis.myform=this.dialogItem;\r\n\t\t\t}else{\r\n\t\t\t\tthis.dialogOpenInit();\r\n\t\t\t}\r\n\t\t},\r\n\t\tdialogOpenInit:function(){\r\n\t\t\tthis.myform={\r\n\t\t\t\t\tname:\"\",\r\n\t\t\t\t\temail:\"\",\r\n\t\t\t\t\tqq:\"\",\r\n\t\t\t\t\taddress:\"\",\r\n\t\t\t\t\tdesc:\"\",\r\n\t\t\t\t\tid:0,\r\n\t\t\t\t\tdate:(new Date).toLocaleDateString()\r\n\t\t\t\t}\r\n\t\t}\r\n\t},\r\n\twatch:{\r\n\t\t\"dialogVisible\":function(newVal){\r\n\t\t\tif(newVal==true){\r\n\t\t\t\tthis.dialogFormVisible=true;\r\n\t\t\t}\r\n\t\t}\r\n\t},\r\n\tmounted:function(){\r\n\r\n\t}\r\n}\r\n</script>\r\n\r\n<style>\r\n\t.message-dialog .el-dialog__body{padding:10px 20px;}\r\n\t.message-dialog .el-form-item__label{padding: 5px 12px 5px 0;}\r\n\t\r\n\t.message-dialog .el-dialog{-webkit-transform: translateX(-50%);}\r\n\t.message-dialog .el-input__inner{height:30px;}\r\n\t\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+
+/***/ 97:
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Message/message-dialog.vue ***!
+  \***************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _messageDatas = __webpack_require__(/*! ./message-datas */ 93);
+	
+	var _messageDatas2 = _interopRequireDefault(_messageDatas);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+		data: function data() {
+			return {
+				dialogFormVisible: false,
+				myform: {
+					name: "",
+					email: "",
+					qq: "",
+					address: "",
+					desc: "",
+					id: 0,
+					date: ""
+				},
+				rules: {
+					name: [{ required: true, message: '请输入名称', trigger: 'blur' }, { min: 2, max: 6, message: '长度在 2到 6 个字符', trigger: 'blur' }],
+					qq: [{ required: true, message: '请输入QQ', trigger: 'blur' }],
+					email: [{ required: true, message: '请输入邮箱', trigger: 'blur' }, { type: "email", message: '请输入正确的邮箱', trigger: 'blur' }],
+					desc: [{ required: true, message: '请输入内容', trigger: 'blur' }]
+				}
+			};
+		},
+		props: ["dialogVisible", "dialogAction", "dialogItem"],
+		methods: {
+			submitForm: function submitForm(formName) {
+				var _this = this;
+				_this.$refs[formName].validate(function (valid) {
+					if (valid) {
+						if (_this.dialogAction == "add") {
+							_messageDatas2.default.id = _this.myform.id = _messageDatas2.default.id + 1;
+							_messageDatas2.default.add(_this.myform);
+						} else {
+							_messageDatas2.default.edit(_this.myform);
+						}
+	
+						_this.dialogClone(true);
+					} else {
+						return false;
+					}
+				});
+			},
+			dialogClone: function dialogClone(flag) {
+				this.dialogFormVisible = false;
+				this.$emit("dialog-close", flag);
+			},
+			dialogOpen: function dialogOpen() {
+				if (this.dialogAction == "edit") {
+					this.myform = this.dialogItem;
+				} else {
+					this.dialogOpenInit();
+				}
+			},
+			dialogOpenInit: function dialogOpenInit() {
+				this.myform = {
+					name: "",
+					email: "",
+					qq: "",
+					address: "",
+					desc: "",
+					id: 0,
+					date: new Date().toLocaleDateString()
+				};
+			}
+		},
+		watch: {
+			"dialogVisible": function dialogVisible(newVal) {
+				if (newVal == true) {
+					this.dialogFormVisible = true;
+				}
+			}
+		},
+		mounted: function mounted() {}
+	};
+
+/***/ },
+
+/***/ 98:
+/*!****************************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Message/message-dialog.vue ***!
+  \****************************************************************************************************************************/
+/***/ function(module, exports) {
+
+	module.exports = "\n<el-dialog title=\"留言\" top=\"10%\" class=\"message-dialog\" v-model=\"dialogFormVisible\" @close=\"dialogClone\" @open=\"dialogOpen\">\n\t<el-form :model=\"myform\" :rules=\"rules\" ref=\"ruleForm\" >\n\t\t<el-form-item label=\"名字\" prop=\"name\">\n\t\t\t<el-input v-model=\"myform.name\" auto-complete=\"on\"></el-input>\n\t\t</el-form-item>\n\t\t<el-form-item label=\"QQ\" prop=\"qq\">\n\t\t\t<el-input v-model=\"myform.qq\" auto-complete=\"on\"></el-input>\n\t\t</el-form-item>\n\t\t<el-form-item label=\"邮箱\" prop=\"email\">\n\t\t\t<el-input v-model=\"myform.email\" auto-complete=\"on\"></el-input>\n\t\t</el-form-item>\n\t\t<el-form-item label=\"地址\" prop=\"address\">\n\t\t\t<el-input v-model=\"myform.address\" auto-complete=\"on\"></el-input>\n\t\t</el-form-item>\n\t\t\n\t\t<el-form-item label=\"内容\" prop=\"desc\">\n\t\t\t<el-input type=\"textarea\" v-model=\"myform.desc\"></el-input>\n\t\t</el-form-item>\n\t\t\n\t</el-form>\n\t<div slot=\"footer\" class=\"dialog-footer\">\n\t\t<el-button @click=\"dialogClone\">取 消</el-button>\n\t\t<el-button type=\"primary\" @click=\"submitForm('ruleForm')\">确 定</el-button>\n\t</div>\n</el-dialog>\n\n\n";
+
+/***/ },
+
+/***/ 99:
+/*!**************************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Message/message-list.vue ***!
   \**************************************************************************************************************************/
-function(e,t){e.exports=' <div> <el-carousel indicator-position=outside> <el-carousel-item v-for="item in items"> <img :src=item.src :alt=item.title width=100% /> </el-carousel-item> </el-carousel> </div> '},/*!*****************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Index/index.vue ***!
-  \*****************************************************************************************************************/
-function(e,t){e.exports=" <section> <carousel></carousel> <about></about> <div class=clearfix style=height:20px></div> <el-card class=box-card> <el-row class=card-title> <el-col :span=18>产品展示</el-col> <el-col :span=6>新闻中心</el-col> </el-row> <el-row> <el-col :span=18 class=borderRight><product></product></el-col> <el-col :span=6><news></news></el-col> </el-row> </el-card> </section> "},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/*!***************************************!*\
-  !*** ./src/images ^\.\/flash.*\.jpg$ ***!
-  \***************************************/
-function(e,t,o){function n(e){return o(r(e))}function r(e){return i[e]||function(){throw new Error("Cannot find module '"+e+"'.")}()}var i={"./flash1.jpg":98,"./flash2.jpg":99,"./flash3.jpg":100,"./flash4.jpg":101};n.keys=function(){return Object.keys(i)},n.resolve=r,e.exports=n,n.id=97},/*!*******************************!*\
-  !*** ./src/images/flash1.jpg ***!
-  \*******************************/
-function(e,t,o){e.exports=o.p+"images/aa029da9.flash1.jpg"},/*!*******************************!*\
-  !*** ./src/images/flash2.jpg ***!
-  \*******************************/
-function(e,t,o){e.exports=o.p+"images/728666c3.flash2.jpg"},/*!*******************************!*\
-  !*** ./src/images/flash3.jpg ***!
-  \*******************************/
-function(e,t,o){e.exports=o.p+"images/c06ea8be.flash3.jpg"},/*!*******************************!*\
-  !*** ./src/images/flash4.jpg ***!
-  \*******************************/
-function(e,t,o){e.exports=o.p+"images/90fefcd6.flash4.jpg"}]);
+/***/ function(module, exports) {
+
+	module.exports = "\n\t<el-card class=\"box-card\">\n\t\t<div slot=\"header\" class=\"clearfix\">\n   \t\t\t<span >留言列表</span>\n   \t\t\t<span style=\"float:right\">首页>留言中心</span>\n  \t\t</div>\n\t\t<div class=\"message-content\">\n\t\t\t<el-button type=\"primary\"  @click=\"handleAdd()\">添加</el-button>\n\t\t\t<el-table\n\t\t\t:data=\"items\"\n\t\t\tborder\n\t\t\tstyle=\"width: 100%\"\n\t\t\t@selection-change=\"handleSelectionChange\">\n\t\t\t\t<el-table-column\n\t\t\t\t  type=\"selection\"\n\t\t\t\t  width=\"50\">\n\t\t\t\t</el-table-column>\n\t\t\t\t<el-table-column\n\t\t\t\t  label=\"日期\"\n\t\t\t\t  width=\"150\">\n\t\t\t\t  <template scope=\"scope\">{{ scope.row.date }}</template>\n\t\t\t\t</el-table-column>\n\t\t\t\t<el-table-column\n\t\t\t\t  prop=\"name\"\n\t\t\t\t  label=\"姓名\"\n\t\t\t\t  width=\"120\">\n\t\t\t\t</el-table-column>\n\t\t\t\t<el-table-column\n\t\t\t\t  prop=\"email\"\n\t\t\t\t  label=\"邮箱\"\n\t\t\t\t  width=\"140\">\n\t\t\t\t</el-table-column>\n\t\t\t\t<el-table-column\n\t\t\t\t  prop=\"qq\"\n\t\t\t\t  label=\"QQ\"\n\t\t\t\t  width=\"100\">\n\t\t\t\t</el-table-column>\n\t\t\t\t<el-table-column\n\t\t\t\t  prop=\"address\"\n\t\t\t\t  label=\"地址\"\n\t\t\t\t  show-overflow-tooltip>\n\t\t\t\t</el-table-column>\n\t\t\t\t<el-table-column label=\"操作\" width=\"150\">\n\t\t\t\t\t  <template scope=\"scope\">\n\t\t\t\t        <el-button\n\t\t\t\t          size=\"small\"\n\t\t\t\t          @click=\"handleEdit(scope.$index, scope.row)\">编辑</el-button>\n\t\t\t\t        <el-button\n\t\t\t\t          size=\"small\"\n\t\t\t\t          type=\"danger\"\n\t\t\t\t          @click=\"handleDelete(scope.$index, scope.row)\">删除</el-button>\n\t\t\t\t      </template>\n\t\t\t\t</el-table-column>\n\t\t\t</el-table>\n\t\t\t<br />\n\t\t\t<page class=\"page-center clearfix\" :total=\"total\" :page-size=\"pageSize\" :page-sizes=\"[10,20,40,100]\"  @size-change=\"sizeChange\"  @page-change=\"pageChange\"></page>\n\t\t\t\n\t\t\t\n\t\t</div>\n\t\t<mydialog :dialog-visible=\"showFlag\" :dialog-item=\"item\" :dialog-action=\"action\" @dialog-close=\"dialogClose\"></mydialog>\n\n\t</el-card>\n";
+
+/***/ }
+
+});
+//# sourceMappingURL=8_file.js.map

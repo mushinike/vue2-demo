@@ -29,17 +29,19 @@
 			.text-right{text-align:center;}
 			.el-dropdown-menu span{display: inline;}
 			.el-col-left{background: #eef1f6;}
+			.floatRight{float:right}
+			.admin-right-session-content{min-height:250px}
 		</style>
 	</head>
 	<body>
 		<div id="app" v-cloak>
 			<header class="header">
 				<el-row >
-				  <el-col :span="10" class="el-col-left">
+				  <el-col :span="6" class="el-col-left">
 				  	<el-button type="text" style="margin-left:50px;font-size: 16PX;">Logo</el-button>
 				  </el-col>
 				  
-				  <el-col :span="14" class="text-right">
+				  <el-col :span="18" class="text-right">
 				  	<el-menu :default-active="activeIndex2" class="index-nav-li" mode="horizontal" router=true >
 						<el-menu-item index="1" route="/index">首页</el-menu-item>
 						<el-menu-item index="2" route="/about">关于我们</el-menu-item>
@@ -51,6 +53,7 @@
 						</el-submenu>
 						<el-menu-item index="5" route="/contact">联系我们</el-menu-item>
 						<el-menu-item index="6" route="/message">留言中心</el-menu-item>
+						<el-menu-item index="7" route="/admin">后台管理</el-menu-item>
 					</el-menu>
 				  </el-col>
 				</el-row>

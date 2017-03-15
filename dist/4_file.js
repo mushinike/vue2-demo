@@ -1,77 +1,777 @@
-webpackJsonp([4],[,,,,,/*!**************************************!*\
+webpackJsonp([4],[
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
+/*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
-function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var a={},i=0;i<this.length;i++){var s=this[i][0];"number"==typeof s&&(a[s]=!0)}for(i=0;i<t.length;i++){var r=t[i];"number"==typeof r[0]&&a[r[0]]||(n&&!r[2]?r[2]=n:n&&(r[2]="("+r[2]+") and ("+n+")"),e.push(r))}},e}},/*!*****************************************!*\
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 8 */
+/*!*****************************************!*\
   !*** ./~/vue-style-loader/addStyles.js ***!
   \*****************************************/
-function(e,t,n){function a(e,t){for(var n=0;n<e.length;n++){var a=e[n],i=l[a.id];if(i){i.refs++;for(var s=0;s<i.parts.length;s++)i.parts[s](a.parts[s]);for(;s<a.parts.length;s++)i.parts.push(p(a.parts[s],t))}else{for(var r=[],s=0;s<a.parts.length;s++)r.push(p(a.parts[s],t));l[a.id]={id:a.id,refs:1,parts:r}}}}function i(e){for(var t=[],n={},a=0;a<e.length;a++){var i=e[a],s=i[0],r=i[1],o=i[2],p=i[3],u={css:r,media:o,sourceMap:p};n[s]?n[s].parts.push(u):t.push(n[s]={id:s,parts:[u]})}return t}function s(e,t){var n=d(),a=v[v.length-1];if("top"===e.insertAt)a?a.nextSibling?n.insertBefore(t,a.nextSibling):n.appendChild(t):n.insertBefore(t,n.firstChild),v.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");n.appendChild(t)}}function r(e){e.parentNode.removeChild(e);var t=v.indexOf(e);t>=0&&v.splice(t,1)}function o(e){var t=document.createElement("style");return t.type="text/css",s(e,t),t}function p(e,t){var n,a,i;if(t.singleton){var s=m++;n=h||(h=o(t)),a=u.bind(null,n,s,!1),i=u.bind(null,n,s,!0)}else n=o(t),a=c.bind(null,n),i=function(){r(n)};return a(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;a(e=t)}else i()}}function u(e,t,n,a){var i=n?"":a.css;if(e.styleSheet)e.styleSheet.cssText=x(t,i);else{var s=document.createTextNode(i),r=e.childNodes;r[t]&&e.removeChild(r[t]),r.length?e.insertBefore(s,r[t]):e.appendChild(s)}}function c(e,t){var n=t.css,a=t.media,i=t.sourceMap;if(a&&e.setAttribute("media",a),i&&(n+="\n/*# sourceURL="+i.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(i))))+" */"),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}var l={},f=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},g=f(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),d=f(function(){return document.head||document.getElementsByTagName("head")[0]}),h=null,m=0,v=[];e.exports=function(e,t){if("object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");t=t||{},"undefined"==typeof t.singleton&&(t.singleton=g()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var n=i(e);return a(n,t),function(e){for(var s=[],r=0;r<n.length;r++){var o=n[r],p=l[o.id];p.refs--,s.push(p)}if(e){var u=i(e);a(u,t)}for(var r=0;r<s.length;r++){var p=s[r];if(0===p.refs){for(var c=0;c<p.parts.length;c++)p.parts[c]();delete l[p.id]}}}};var x=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},,,,,,,,,,,/*!**********************************!*\
-  !*** ./src/images/hamburger.png ***!
-  \**********************************/
-function(e,t,n){e.exports=n.p+"images/50e4091c.hamburger.png"},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/*!*********************************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(true) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+	
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */
+/*!*******************************************!*\
+  !*** ./src/components/News/news-datas.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		getData: function getData(id, type) {
+			var obj,
+			    typeStr = type == 1 ? "公司新闻" : "行业新闻";
+			obj = {};
+			obj.id = id;
+			obj.type = type;
+			obj.title = typeStr + " 新闻名称" + id;
+			obj.content = "新闻内容" + id;
+			obj.date = new Date().toLocaleDateString();
+			obj.src = __webpack_require__(/*! ../../images/news-image.png */ 25);
+	
+			return obj;
+		},
+		getPageDatas: function getPageDatas() {
+			var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+			var pageIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+			var pageNum = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 20;
+	
+			//title:"新闻名称1",id:1,content:"新闻描述1","src":"000"
+			var retArrs = [];
+			this.total = 3500;
+			this.pageIndex = pageIndex;
+			this.pageNum = pageNum;
+			pageIndex = pageIndex < 1 ? 1 : pageIndex;
+			pageNum = pageNum < 0 ? 0 : pageNum;
+			var pageStart = (pageIndex - 1) * pageNum;
+			var pageEnd = pageStart + pageNum;
+			var obj,
+			    typeStr = "";
+	
+			if (type != 0) {
+				typeStr = type == 1 ? "公司新闻" : "行业新闻";
+			}
+			for (; pageStart < pageEnd; pageStart++) {
+				obj = {};
+				obj.id = pageStart;
+				obj.type = type;
+				obj.title = typeStr + " 新闻名称" + pageStart;
+				obj.content = "新闻内容" + pageStart;
+				obj.date = new Date().toLocaleDateString();
+				obj.src = __webpack_require__(/*! ../../images/news-image.png */ 25);
+	
+				retArrs.push(obj);
+			}
+	
+			return retArrs;
+		},
+		total: 0,
+		pageIndex: 0,
+		pageNum: 0
+	};
+
+/***/ },
+/* 25 */
+/*!***********************************!*\
+  !*** ./src/images/news-image.png ***!
+  \***********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/81010731.news-image.png";
+
+/***/ },
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */
+/*!*******************************************!*\
+  !*** ./src/components/News/news-list.vue ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./news-list.vue */ 48)
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./news-list.vue */ 50)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src\\components\\News\\news-list.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./news-list.vue */ 59)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-500f3291/news-list.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 48 */
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./~/vue-style-loader!./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/News/news-list.vue ***!
+  \********************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../../../~/css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./news-list.vue */ 49);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../../../~/vue-style-loader/addStyles.js */ 8)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./news-list.vue", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./news-list.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 49 */
+/*!***********************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/News/news-list.vue ***!
+  \***********************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 7)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n\r\n.news-lists-item{line-height: 30px;border-bottom: 1px dashed #999;list-style-position:inside;}\r\n.news-lists-item span{float: right;}\r\n", "", {"version":3,"sources":["/./src/components/News/news-list.vue?01a0604d"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAsBA,iBAAA,kBAAA,+BAAA,2BAAA,CAAA;AACA,sBAAA,aAAA,CAAA","file":"news-list.vue","sourcesContent":["<template>\r\n\t<el-card class=\"box-card\">\r\n\t  \t<el-row>\r\n\t\t\t  <el-col :span=\"3\" ><list-nav></list-nav></el-col>\r\n\t\t\t  <el-col :span=\"19\" offset=\"2\">\r\n\t\t\t  \t<el-card class=\"box-card\">\r\n\t\t\t  \t\t<ul>\r\n\t\t\t\t\t  <li v-for=\"(value,key) in items\" class=\"text item news-lists-item\">\r\n\t\t\t\t\t  \t<span>{{value.date}}</span>\r\n\t\t\t\t\t  \r\n\t\t\t\t\t  \t<router-link :to=\"routerUrl(value.id)\">{{value.title}}</router-link>\r\n\t\t\t\t\t  </li>\r\n\t\t\t\t\t</ul>\r\n\t\t\t\t\t<page :total=\"total\" :page-size=\"pageSize\" :page-sizes=\"[20,40,60,100]\"  @size-change=\"sizeChange\"  @size-change=\"sizeChange\"  @page-change=\"pageChange\"></page>\r\n\t\t\t  \t</el-card>\r\n\t\t\t  </el-col>\r\n\t\t  \r\n\t\t</el-row>\r\n\t</el-card>\r\n</template>\r\n<style>\r\n\r\n.news-lists-item{line-height: 30px;border-bottom: 1px dashed #999;list-style-position:inside;}\r\n.news-lists-item span{float: right;}\r\n</style>\r\n<script>\r\nimport news from \"./news-datas.js\";\r\nimport nav from \"./news-list-nav.vue\";\r\nimport page from \"../Tools/pagination\";\r\n\r\nexport default{\r\n\tdata:function(){\r\n\t\treturn {\r\n\t\t\ttotal:0,\r\n\t\t\tnewsType:1,\r\n\t\t\tpageSize:20,\r\n\t\t\titems:[]\r\n\t\t}\r\n\t},\r\n\tcomponents:{\r\n\t\tpage,\r\n\t\t\"list-nav\":nav\r\n\t},\r\n\tmethods:{\r\n\t\trouterUrl:function(id){\r\n\t\t\tvar obj={};\r\n\t\t\t\tobj.path=\"/news/detail/\"\r\n\t\t\t\tobj.name=\"detail\";\r\n\t\t\t\tobj.params={id:id,type:this.newsType};\r\n\t\t\t\treturn obj;\r\n\t\t},\r\n\t\tpageChange:function(val){\r\n\t\t\tthis.items=news.getPageDatas(this.newsType,val,news.pageNum);\r\n\t\t\tthis.total=news.total;\r\n\t\t},\r\n\t\tsizeChange:function(val){\r\n\t\t\tthis.items=news.getPageDatas(this.newsType,news.pageIndex,val);\r\n\t\t\tthis.total=news.total;\r\n\t\t\tthis.pageSize=val;\r\n\t\t},\r\n\t\tpageInit:function(){\r\n\t\t\tvar params=this.$route.params;\r\n\t\t\tthis.newsType=params.type;\r\n\t\t\tthis.items=news.getPageDatas(this.newsType,1,20);\r\n\t\t\tthis.total=news.total;\r\n\t\t}\r\n\t},\r\n\tmounted:function(){\r\n\t\tthis.pageInit();\r\n\t},\r\n\twatch:{\r\n\t\t$route:function(){\r\n\t\t\tthis.pageInit();\r\n\t\t}\r\n\t}\r\n}\r\n</script>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 50 */
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/News/news-list.vue ***!
+  \*******************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _newsDatas = __webpack_require__(/*! ./news-datas.js */ 24);
+	
+	var _newsDatas2 = _interopRequireDefault(_newsDatas);
+	
+	var _newsListNav = __webpack_require__(/*! ./news-list-nav.vue */ 51);
+	
+	var _newsListNav2 = _interopRequireDefault(_newsListNav);
+	
+	var _pagination = __webpack_require__(/*! ../Tools/pagination */ 56);
+	
+	var _pagination2 = _interopRequireDefault(_pagination);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+		data: function data() {
+			return {
+				total: 0,
+				newsType: 1,
+				pageSize: 20,
+				items: []
+			};
+		},
+		components: {
+			page: _pagination2.default,
+			"list-nav": _newsListNav2.default
+		},
+		methods: {
+			routerUrl: function routerUrl(id) {
+				var obj = {};
+				obj.path = "/news/detail/";
+				obj.name = "detail";
+				obj.params = { id: id, type: this.newsType };
+				return obj;
+			},
+			pageChange: function pageChange(val) {
+				this.items = _newsDatas2.default.getPageDatas(this.newsType, val, _newsDatas2.default.pageNum);
+				this.total = _newsDatas2.default.total;
+			},
+			sizeChange: function sizeChange(val) {
+				this.items = _newsDatas2.default.getPageDatas(this.newsType, _newsDatas2.default.pageIndex, val);
+				this.total = _newsDatas2.default.total;
+				this.pageSize = val;
+			},
+			pageInit: function pageInit() {
+				var params = this.$route.params;
+				this.newsType = params.type;
+				this.items = _newsDatas2.default.getPageDatas(this.newsType, 1, 20);
+				this.total = _newsDatas2.default.total;
+			}
+		},
+		mounted: function mounted() {
+			this.pageInit();
+		},
+		watch: {
+			$route: function $route() {
+				this.pageInit();
+			}
+		}
+	};
+
+/***/ },
+/* 51 */
+/*!***********************************************!*\
+  !*** ./src/components/News/news-list-nav.vue ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./news-list-nav.vue */ 52)
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./news-list-nav.vue */ 54)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src\\components\\News\\news-list-nav.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./news-list-nav.vue */ 55)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-48f3d0e7/news-list-nav.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 52 */
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./~/vue-style-loader!./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/News/news-list-nav.vue ***!
+  \************************************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !../../../~/css-loader?sourceMap!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./news-list-nav.vue */ 53);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ../../../~/vue-style-loader/addStyles.js */ 8)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./news-list-nav.vue", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js?sourceMap!../../../node_modules/vue-loader/lib/style-rewriter.js!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./news-list-nav.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 53 */
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./~/css-loader?sourceMap!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/News/news-list-nav.vue ***!
+  \***************************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 7)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n.news-list-nav span{display: inline;}\n", "", {"version":3,"sources":["/./src/components/News/news-list-nav.vue?71990d66"],"names":[],"mappings":";;;;;;;AAOA,oBAAA,gBAAA,CAAA","file":"news-list-nav.vue","sourcesContent":["<template>\r\n\t<el-menu :default-active=\"newsActiveIndex\" class=\"news-list-nav\" router=true >\r\n\t  <el-menu-item index=\"1\" route=\"/news/list/1\">公司新闻</el-menu-item>\r\n\t  <el-menu-item index=\"2\" route=\"/news/list/2\">行业新闻</el-menu-item>\r\n\t</el-menu>\r\n</template>\r\n<style>\r\n\t.news-list-nav span{display: inline;}\r\n</style>\r\n<script>\r\nexport default{\r\n\tdata:function(){\r\n\t\treturn {\r\n\t\t\tnewsActiveIndex:\"1\"\r\n\t\t}\r\n\t},\r\n\tmounted:function(){\r\n\t\t\r\n\t\tvar params=this.$route.params;\r\n\t\tthis.newsActiveIndex=params.type;\r\n\t\t\r\n\t},\r\n\twatch:{\r\n\t\t$route:function(){\r\n\t\t\tvar params=this.$route.params;\r\n\t\t\tthis.newsActiveIndex=params.type;\r\n\t\t}\r\n\t}\r\n}\r\n</script>\r\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 54 */
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/News/news-list-nav.vue ***!
+  \***********************************************************************************************************************************************************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		data: function data() {
+			return {
+				newsActiveIndex: "1"
+			};
+		},
+		mounted: function mounted() {
+	
+			var params = this.$route.params;
+			this.newsActiveIndex = params.type;
+		},
+		watch: {
+			$route: function $route() {
+				var params = this.$route.params;
+				this.newsActiveIndex = params.type;
+			}
+		}
+	};
+
+/***/ },
+/* 55 */
+/*!************************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/News/news-list-nav.vue ***!
+  \************************************************************************************************************************/
+/***/ function(module, exports) {
+
+	module.exports = "\n<el-menu :default-active=\"newsActiveIndex\" class=\"news-list-nav\" router=true >\n  <el-menu-item index=\"1\" route=\"/news/list/1\">公司新闻</el-menu-item>\n  <el-menu-item index=\"2\" route=\"/news/list/2\">行业新闻</el-menu-item>\n</el-menu>\n";
+
+/***/ },
+/* 56 */
+/*!*********************************************!*\
   !*** ./src/components/Tools/pagination.vue ***!
   \*********************************************/
-function(e,t,n){var a,i,s={};a=n(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./pagination.vue */52),i=n(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./pagination.vue */53),e.exports=a||{},e.exports.__esModule&&(e.exports=e.exports.default);var r="function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports;i&&(r.template=i),r.computed||(r.computed={}),Object.keys(s).forEach(function(e){var t=s[e];r.computed[e]=function(){return t}})},/*!*********************************************************************************************************************************************************************************!*\
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./pagination.vue */ 57)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src\\components\\Tools\\pagination.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./pagination.vue */ 58)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-2e4a94bd/pagination.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 57 */
+/*!*********************************************************************************************************************************************************************************!*\
   !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Tools/pagination.vue ***!
   \*********************************************************************************************************************************************************************************/
-function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={methods:{handleSizeChange:function(e){this.pageSize=e,this.$emit("size-change",e)},handleCurrentChange:function(e){this.currentPage=e,this.$emit("page-change",e)}},props:["total","pageSize","pageSizes"],data:function(){return{currentPage:1}},created:function(){},watch:{$route:function(){this.currentPage=1}}}},/*!**********************************************************************************************************************!*\
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  methods: {
+	    handleSizeChange: function handleSizeChange(val) {
+	      this.pageSize = val;
+	      this.$emit("size-change", val);
+	    },
+	    handleCurrentChange: function handleCurrentChange(val) {
+	      this.currentPage = val;
+	
+	      this.$emit("page-change", val);
+	    }
+	  },
+	  props: ["total", "pageSize", "pageSizes"],
+	  data: function data() {
+	    return {
+	      currentPage: 1
+	    };
+	  },
+	
+	  created: function created() {},
+	  watch: {
+	    $route: function $route() {
+	      this.currentPage = 1;
+	    }
+	  }
+	};
+
+/***/ },
+/* 58 */
+/*!**********************************************************************************************************************!*\
   !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Tools/pagination.vue ***!
   \**********************************************************************************************************************/
-function(e,t){e.exports=' <el-pagination @size-change=handleSizeChange @current-change=handleCurrentChange :current-page=currentPage :page-sizes=pageSizes :page-size=pageSize layout="total, sizes, prev, pager, next, jumper" :total=total> </el-pagination> '},,/*!*************************************************!*\
-  !*** ./src/components/Product/product-list.vue ***!
-  \*************************************************/
-function(e,t,n){var a,i,s={};n(/*! !vue-style-loader!css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue */56),a=n(/*! !babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!../../../~/vue-loader/lib/selector.js?type=script&index=0!./product-list.vue */58),i=n(/*! !vue-html-loader!../../../~/vue-loader/lib/selector.js?type=template&index=0!./product-list.vue */70),e.exports=a||{},e.exports.__esModule&&(e.exports=e.exports.default);var r="function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports;i&&(r.template=i),r.computed||(r.computed={}),Object.keys(s).forEach(function(e){var t=s[e];r.computed[e]=function(){return t}})},/*!****************************************************************************************************************************************************************************!*\
-  !*** ./~/vue-style-loader!./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Product/product-list.vue ***!
-  \****************************************************************************************************************************************************************************/
-function(e,t,n){var a=n(/*! !../../../~/css-loader!../../../~/vue-loader/lib/style-rewriter.js!../../../~/vue-loader/lib/selector.js?type=style&index=0!./product-list.vue */57);"string"==typeof a&&(a=[[e.id,a,""]]);n(/*! ../../../~/vue-style-loader/addStyles.js */6)(a,{});a.locals&&(e.exports=a.locals)},/*!*******************************************************************************************************************************************************!*\
-  !*** ./~/css-loader!./~/vue-loader/lib/style-rewriter.js!./~/vue-loader/lib/selector.js?type=style&index=0!./src/components/Product/product-list.vue ***!
-  \*******************************************************************************************************************************************************/
-function(e,t,n){t=e.exports=n(/*! ../../../~/css-loader/lib/css-base.js */5)(),t.push([e.id,".product-content{overflow:hidden}.product-content-ul li{float:left;margin-right:36px;margin-bottom:30px}.product-content-ul li img{vertical-align:top;width:220px}.product-content-ul li.marginRight0{margin-right:0}.page-center{margin:0 auto;text-align:center}",""])},/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader/lib?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./src/components/Product/product-list.vue ***!
-  \*************************************************************************************************************************************************************************************/
-function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(/*! ./product-datas */59),s=a(i),r=n(/*! ../Tools/pagination */51),o=a(r);t.default={data:function(){return{items:[],total:0,pageSize:8}},beforeRouteEnter:function(e,t,n){var a=s.default.getPageDatas(1,8);n(function(e){e.items=a,e.total=s.default.total})},methods:{pageChange:function(e){this.items=s.default.getPageDatas(e,s.default.pageNum),this.total=s.default.total},sizeChange:function(e){this.items=s.default.getPageDatas(s.default.pageIndex,e),this.total=s.default.total,this.pageSize=e},pageInit:function(){this.items=s.default.getPageDatas(1,8),this.total=s.default.total}},mounted:function(){},components:{page:o.default}}},/*!*************************************************!*\
-  !*** ./src/components/Product/product-datas.js ***!
-  \*************************************************/
-function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={getOneData:function(e){var t={};/*! ../../images/pic_1.jpg */
-/*! ../../images/1.jpg */
-/*! ../../images/2.jpg */
-/*! ../../images/3.jpg */
-/*! ../../images/4.jpg */
-/*! ../../images/5.jpg */
-/*! ../../images/6.jpg */
-/*! ../../images/7.jpg */
-/*! ../../images/8.jpg */
-/*! ../../images/9.jpg */
-return t.id=e,t.title="产品名称"+e,t.content="产品内容"+e,t.date=(new Date).toLocaleDateString(),t.src=n(60),t.images=[],t.images.push(n(61)),t.images.push(n(62)),t.images.push(n(63)),t.images.push(n(64)),t.images.push(n(65)),t.images.push(n(66)),t.images.push(n(67)),t.images.push(n(68)),t.images.push(n(69)),t},getPageDatas:function(e,t){var a=[];this.total=3500,this.pageIndex=e,this.pageNum=t,e=e<1?1:e,t=t<0?0:t;var i=(e-1)*t+1,s=i+t;s=s>this.total?this.total+1:s;for(var r;i<s;i++)r={},r.id=i,r.title="产品名称"+i,r.content="产品内容"+i,r.date=(new Date).toLocaleDateString(),r.src=n(/*! ../../images/hamburger.png */17),r.images=[],r.images.push(n(/*! ../../images/1.jpg */61)),r.images.push(n(/*! ../../images/2.jpg */62)),r.images.push(n(/*! ../../images/3.jpg */63)),r.images.push(n(/*! ../../images/4.jpg */64)),r.images.push(n(/*! ../../images/5.jpg */65)),r.images.push(n(/*! ../../images/6.jpg */66)),r.images.push(n(/*! ../../images/7.jpg */67)),r.images.push(n(/*! ../../images/8.jpg */68)),r.images.push(n(/*! ../../images/9.jpg */69)),a.push(r);return a},total:0,pageIndex:0,pageNum:0}},/*!******************************!*\
-  !*** ./src/images/pic_1.jpg ***!
-  \******************************/
-function(e,t,n){e.exports=n.p+"images/3592d69e.pic_1.jpg"},/*!**************************!*\
-  !*** ./src/images/1.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/f8db9259.1.jpg"},/*!**************************!*\
-  !*** ./src/images/2.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/b5e29614.2.jpg"},/*!**************************!*\
-  !*** ./src/images/3.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/11b3f34e.3.jpg"},/*!**************************!*\
-  !*** ./src/images/4.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/89681310.4.jpg"},/*!**************************!*\
-  !*** ./src/images/5.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/725a58ab.5.jpg"},/*!**************************!*\
-  !*** ./src/images/6.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/b3638470.6.jpg"},/*!**************************!*\
-  !*** ./src/images/7.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/d35f34f7.7.jpg"},/*!**************************!*\
-  !*** ./src/images/8.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/dfd3ecb1.8.jpg"},/*!**************************!*\
-  !*** ./src/images/9.jpg ***!
-  \**************************/
-function(e,t,n){e.exports=n.p+"images/e3a71e1e.9.jpg"},/*!**************************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/Product/product-list.vue ***!
-  \**************************************************************************************************************************/
-function(e,t,n){e.exports=' <el-card class=box-card> <div slot=header class=clearfix> <span>产品列表</span> <span style=float:right>首页>产品展示</span> </div> <div class=product-content> <ul class="clearfix product-content-ul"> <li v-for="(item,key,index) in items" :class="{marginRight0:(key+1)%4==0}"> <el-card :body-style="{ padding: \'5px\' }"> <img src='+n(/*! ../../images/hamburger.png */17)+" class=image> <div> <span>{{item.title}}</span> <div class=\"bottom clearfix\"> <span class=time>{{item.date}}</span> <router-link :to=\"{path:'/product/detail/',name:'product-detail',params:{id:item.id}}\">查看详情</router-link> </div> </div> </el-card> </li> </ul> <page class=page-center :total=total :page-size=pageSize :page-sizes=[8,16,24,50] @size-change=sizeChange @page-change=pageChange></page> </div> </el-card> "}]);
+/***/ function(module, exports) {
+
+	module.exports = "\n<el-pagination\n  @size-change=\"handleSizeChange\"\n  @current-change=\"handleCurrentChange\"\n  :current-page=\"currentPage\"\n  :page-sizes=\"pageSizes\"\n  :page-size=\"pageSize\"\n  layout=\"total, sizes, prev, pager, next, jumper\"\n  :total=\"total\">\n</el-pagination>\n";
+
+/***/ },
+/* 59 */
+/*!********************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./src/components/News/news-list.vue ***!
+  \********************************************************************************************************************/
+/***/ function(module, exports) {
+
+	module.exports = "\n<el-card class=\"box-card\">\n  \t<el-row>\n\t\t  <el-col :span=\"3\" ><list-nav></list-nav></el-col>\n\t\t  <el-col :span=\"19\" offset=\"2\">\n\t\t  \t<el-card class=\"box-card\">\n\t\t  \t\t<ul>\n\t\t\t\t  <li v-for=\"(value,key) in items\" class=\"text item news-lists-item\">\n\t\t\t\t  \t<span>{{value.date}}</span>\n\t\t\t\t  \n\t\t\t\t  \t<router-link :to=\"routerUrl(value.id)\">{{value.title}}</router-link>\n\t\t\t\t  </li>\n\t\t\t\t</ul>\n\t\t\t\t<page :total=\"total\" :page-size=\"pageSize\" :page-sizes=\"[20,40,60,100]\"  @size-change=\"sizeChange\"  @size-change=\"sizeChange\"  @page-change=\"pageChange\"></page>\n\t\t  \t</el-card>\n\t\t  </el-col>\n\t  \n\t</el-row>\n</el-card>\n";
+
+/***/ }
+]);
+//# sourceMappingURL=4_file.js.map

@@ -28,10 +28,11 @@ export default{
 		}
 	},
 	mounted:function(){
+		about.init();
 		if(this.$root.about){
 			this.message=this.$root.about;
 		}else{
-			this.$root.about=this.message=about.getAboutData();
+			this.$root.about=this.message=about.getOne();
 		}
 		
 		this.image=require("../../images/about.jpg");

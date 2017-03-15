@@ -19,7 +19,7 @@ export default{
 		this.pageNum=pageNum;
 		pageIndex=pageIndex<1?1:pageIndex;
 		pageNum=pageNum<0?0:pageNum;
-		var pageStart=(pageIndex-1)*pageNum+1;
+		var pageStart=(pageIndex-1)*pageNum;
 		var pageEnd=pageStart+pageNum;
 		var obj,typeStr="";
 		
