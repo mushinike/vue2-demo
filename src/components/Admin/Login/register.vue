@@ -68,6 +68,7 @@ export default{
       	var _this=this;
         _this.$refs[formName].validate((valid) => {
           if (valid) {
+          	debugger
             data.add(_this.formLabelAlign);
             sessionStorage["loginName"]=JSON.stringify(_this.formLabelAlign);
             _this.$router.push({"path":"/admin/index/content"});

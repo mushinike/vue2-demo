@@ -24,7 +24,7 @@ export default{
 		
 		var users=JSON.parse(sessionStorage["users"]);
 			if(users.length>1){
-				users.push(users);
+				users.push(obj);
 			}else{
 				users=[].concat(users,obj);
 			}
